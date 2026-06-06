@@ -13,7 +13,13 @@
 
   <!-- NAV -->
   <nav class="navbar">
-    <a href="index.html" class="nav-logo">📄 PRD<span>Project</span></a>
+    <a href="index.html" class="nav-logo">
+      <img src="https://cdn-icons-png.flaticon.com/512/2921/2921222.png" alt="PRD Logo" class="nav-logo-img"/>
+      Product <span>Plan</span>
+    </a>
+    <div class="nav-center">
+      <span class="nav-tagline">Product Management Project</span>
+    </div>
     <div class="nav-links">
       <a href="#about">About</a>
       <a href="#comics">Why PRDs</a>
@@ -25,20 +31,9 @@
   <header class="hero">
     <div class="hero-bg-grid"></div>
     <div class="hero-content">
-      <div class="hero-badge">MBA Prep · Product Management</div>
-      <h1 class="hero-title">
-        Product<br/>
-        <em>Requirement</em><br/>
-        Documents
-      </h1>
+      <h1 class="hero-title">Product Requirement Documents</h1>
       <p class="hero-subtitle">A curated library of professional PRDs crafted for real-world products — built to understand the craft of product thinking.</p>
       <a href="#prds" class="hero-cta">Explore PRDs ↓</a>
-    </div>
-    <div class="hero-decoration">
-      <div class="deco-card deco-1">🎯 User Goals</div>
-      <div class="deco-card deco-2">📊 Success Metrics</div>
-      <div class="deco-card deco-3">🗺️ User Journey</div>
-      <div class="deco-card deco-4">✅ Requirements</div>
     </div>
   </header>
 
@@ -85,6 +80,7 @@
 
     <div class="comics-grid">
 
+      <!-- Comic 1 — Make Users Happy -->
       <div class="comic-card">
         <div class="comic-illustration">
           <div class="comic-scene scene-1">
@@ -93,9 +89,9 @@
                 <div class="head"></div><div class="body"></div><div class="arms"></div><div class="legs"></div>
                 <div class="label">PM</div>
               </div>
-              <div class="speech-bubble left">"Build me a button that makes users happy!"</div>
+              <div class="speech-bubble">"Build me a button that makes users happy!"</div>
             </div>
-            <div class="comic-panel panel-2">
+            <div class="comic-panel">
               <div class="stick-figure dev">
                 <div class="head"></div><div class="body"></div><div class="arms"></div><div class="legs"></div>
                 <div class="label">DEV</div>
@@ -113,6 +109,7 @@
         </div>
       </div>
 
+      <!-- Comic 2 — Scope Creep Iceberg -->
       <div class="comic-card">
         <div class="comic-illustration">
           <div class="comic-scene scene-2">
@@ -132,6 +129,7 @@
         </div>
       </div>
 
+      <!-- Comic 3 — Deadline Paradox -->
       <div class="comic-card">
         <div class="comic-illustration">
           <div class="comic-scene scene-3">
@@ -161,9 +159,51 @@
         </div>
       </div>
 
+      <!-- Comic 4 — The Side Quest (inspired by reference image) -->
       <div class="comic-card">
         <div class="comic-illustration">
           <div class="comic-scene scene-4">
+            <div class="sidequest-comic">
+              <div class="sq-panel sq-left">
+                <div class="sq-label">THE ENGINEER</div>
+                <div class="sq-figure">
+                  <div class="sq-character eng-char">
+                    <div class="sq-head">💻</div>
+                    <div class="sq-body-row">
+                      <div class="sq-item">🗂️</div>
+                      <div class="sq-item">⚙️</div>
+                      <div class="sq-item">🔧</div>
+                      <div class="sq-item">🐛</div>
+                      <div class="sq-item">📦</div>
+                    </div>
+                    <div class="sq-caption-inner">carrying 12 unreviewed PRs, 3 half-built features & a database migration from 2024</div>
+                  </div>
+                </div>
+              </div>
+              <div class="sq-divider"></div>
+              <div class="sq-panel sq-right">
+                <div class="sq-label">THE PRD</div>
+                <div class="sq-figure">
+                  <div class="sq-character prd-char">
+                    <div class="sq-head">📄</div>
+                    <div class="sq-waiting">still waiting...<br/>since Sprint 1</div>
+                    <div class="sq-caption-inner">written 3 months ago. never read. never approved. slowly gathering dust.</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="comic-caption">
+          <h3>The PRD Nobody Read</h3>
+          <p>The engineer shipped 20 features. The PRD sat unread for 3 months. Then one day the PM asked, <em>"Why didn't you build what I wrote?"</em> Nobody had an answer.</p>
+        </div>
+      </div>
+
+      <!-- Comic 5 — Everyone has an opinion -->
+      <div class="comic-card">
+        <div class="comic-illustration">
+          <div class="comic-scene scene-5">
             <div class="team-chaos">
               <div class="chaos-figure" style="--c:#FF6B6B">
                 <div class="chaos-head">🎨</div>
@@ -190,6 +230,40 @@
         <div class="comic-caption">
           <h3>Everyone Has An Opinion</h3>
           <p>Three teams, seven opinions, zero alignment. The PRD is the referee. It doesn't care about opinions — only about the user's problem and measurable outcomes.</p>
+        </div>
+      </div>
+
+      <!-- Comic 6 — The "Help I fell down a hole" inspired comic -->
+      <div class="comic-card">
+        <div class="comic-illustration">
+          <div class="comic-scene scene-6">
+            <div class="xkcd-comic">
+              <div class="xkcd-panel xkcd-p1">
+                <div class="xkcd-stick">
+                  <div class="xk-head"></div><div class="xk-body"></div><div class="xk-arms"></div><div class="xk-legs"></div>
+                </div>
+                <div class="xkcd-bubble">HELP!<br/>WE HAVE<br/>NO PRD!</div>
+              </div>
+              <div class="xkcd-panel xkcd-p2">
+                <div class="xkcd-stick running">
+                  <div class="xk-head"></div><div class="xk-body"></div><div class="xk-arms"></div><div class="xk-legs"></div>
+                </div>
+                <div class="xkcd-hole">⬛</div>
+              </div>
+              <div class="xkcd-panel xkcd-p3">
+                <div class="xkcd-stick crouching">
+                  <div class="xk-head"></div><div class="xk-body short"></div><div class="xk-arms"></div>
+                </div>
+                <div class="xkcd-hole">⬛</div>
+                <div class="xkcd-bubble small">"HEY! Should this button be blue or green? And does it need to support dark mode? Also, who is this even for?"</div>
+              </div>
+            </div>
+            <div class="xkcd-caption-bar">A TEAM WITHOUT A PRD WILL ALWAYS FIND THE HOLE. THEN ASK QUESTIONS WHILE INSIDE IT.</div>
+          </div>
+        </div>
+        <div class="comic-caption">
+          <h3>The Bottomless Requirement Hole</h3>
+          <p>Without a PRD, every small decision becomes a meeting. Every meeting spawns three more questions. Every question delays the sprint. The hole has no bottom.</p>
         </div>
       </div>
 
@@ -222,9 +296,7 @@
           <div class="prd-card-tag">Coming Soon</div>
           <h4>Google Search — AI Overview Relevance Filter</h4>
           <p>Let users control when AI-generated overviews appear in search results</p>
-          <div class="prd-card-meta">
-            <span>🚧 In Progress</span>
-          </div>
+          <div class="prd-card-meta"><span>🚧 In Progress</span></div>
           <div class="prd-card-arrow">Coming Soon</div>
         </a>
       </div>
@@ -232,17 +304,15 @@
 
     <div class="company-group">
       <div class="company-header">
-        <div class="company-logo amazon">a</div>
+        <div class="company-logo amazon">A</div>
         <h3>Amazon</h3>
       </div>
       <div class="prd-cards">
         <a href="pages/coming-soon.html" class="prd-card faded">
           <div class="prd-card-tag">Coming Soon</div>
-          <h4>Amazon — Subscribe & Save Price Lock</h4>
+          <h4>Amazon — Subscribe &amp; Save Price Lock</h4>
           <p>Allow users to lock subscription prices for 6 months during volatile market periods</p>
-          <div class="prd-card-meta">
-            <span>🚧 In Progress</span>
-          </div>
+          <div class="prd-card-meta"><span>🚧 In Progress</span></div>
           <div class="prd-card-arrow">Coming Soon</div>
         </a>
       </div>
@@ -258,9 +328,7 @@
           <div class="prd-card-tag">Coming Soon</div>
           <h4>Uber — Scheduled Ride Price Guarantee</h4>
           <p>Guarantee the fare shown at scheduling time, eliminating surge anxiety for pre-planned rides</p>
-          <div class="prd-card-meta">
-            <span>🚧 In Progress</span>
-          </div>
+          <div class="prd-card-meta"><span>🚧 In Progress</span></div>
           <div class="prd-card-arrow">Coming Soon</div>
         </a>
       </div>
@@ -276,9 +344,7 @@
           <div class="prd-card-tag">Coming Soon</div>
           <h4>Spotify — Collaborative Playlist Voting</h4>
           <p>Let group playlist members vote songs up/down so the best tracks rise to the top democratically</p>
-          <div class="prd-card-meta">
-            <span>🚧 In Progress</span>
-          </div>
+          <div class="prd-card-meta"><span>🚧 In Progress</span></div>
           <div class="prd-card-arrow">Coming Soon</div>
         </a>
       </div>
@@ -289,7 +355,7 @@
   <!-- FOOTER -->
   <footer class="footer">
     <div class="footer-inner">
-      <div class="footer-brand">📄 PRDProject</div>
+      <div class="footer-brand">📄 PRD Project</div>
       <p>Built as a pre-MBA portfolio project to master Product Management fundamentals through hands-on PRD writing.</p>
       <p class="footer-note">All PRDs are original work for educational purposes. Products and companies referenced are trademarks of their respective owners.</p>
     </div>

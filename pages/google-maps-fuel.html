@@ -8,11 +8,184 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,600;0,9..144,800;1,9..144,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+  <style>
+    /* ── Navbar: logo left, links right ── */
+    .prd-page .navbar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .prd-page .navbar .nav-center { display: none; }
+
+    /* ── Hero: text left, logo right ── */
+    .prd-hero-section {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 3rem;
+    }
+    .prd-hero-left { flex: 1; position: relative; z-index: 1; }
+    .prd-hero-right {
+      flex-shrink: 0;
+      position: relative;
+      z-index: 1;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .prd-company-logo {
+      width: 260px;
+      height: 260px;
+      object-fit: contain;
+      opacity: 0.92;
+      filter: drop-shadow(0 8px 32px rgba(0,0,0,0.4));
+      animation: floatLogo 3s ease-in-out infinite;
+    }
+    @keyframes floatLogo {
+      0%, 100% { transform: translateY(0px); }
+      50%       { transform: translateY(-16px); }
+    }
+
+    /* ── PRD content: tables scroll on small screens ── */
+    .prd-table-wrapper {
+      width: 100%;
+      overflow-x: auto;
+      -webkit-overflow-scrolling: touch;
+    }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 900px) {
+
+      /* Navbar */
+      .prd-page .navbar {
+        padding: 0.9rem 1.25rem;
+      }
+      .prd-page .navbar .nav-links {
+        display: flex;
+        gap: 1rem;
+      }
+      .prd-page .navbar .nav-links a {
+        font-size: 0.8rem;
+      }
+
+      /* Hero — stack vertically, logo below text */
+      .prd-hero-section {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 2rem;
+        padding: 3rem 1.5rem 2.5rem;
+      }
+      .prd-hero-right {
+        width: 100%;
+        justify-content: center;
+      }
+      .prd-company-logo {
+        width: 160px;
+        height: 160px;
+      }
+
+      /* PRD content area */
+      .prd-content {
+        padding: 2rem 1.25rem;
+      }
+
+      /* Section headings */
+      .prd-section h2 {
+        font-size: 1.4rem;
+      }
+
+      /* Tables — horizontal scroll */
+      .prd-table {
+        display: block;
+        overflow-x: auto;
+        -webkit-overflow-scrolling: touch;
+        white-space: nowrap;
+        font-size: 0.8rem;
+      }
+      .prd-table th,
+      .prd-table td {
+        padding: 0.65rem 0.75rem;
+      }
+
+      /* Requirement blocks */
+      .req-block {
+        padding: 1rem 1.1rem;
+      }
+      .req-block h4 { font-size: 0.92rem; }
+      .req-block p  { font-size: 0.82rem; }
+
+      /* User story cards */
+      .user-story-card {
+        font-size: 0.82rem;
+        padding: 0.85rem 1rem;
+      }
+
+      /* Persona cards */
+      .persona-card {
+        padding: 1.25rem;
+      }
+      .persona-card .persona-header {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 0.5rem;
+      }
+
+      /* Meta chips — wrap nicely */
+      .prd-meta-row {
+        gap: 0.6rem;
+      }
+      .prd-meta-chip {
+        font-size: 0.72rem;
+        padding: 0.3rem 0.75rem;
+      }
+
+      /* Breadcrumb */
+      .prd-breadcrumb {
+        font-size: 0.72rem;
+      }
+
+      /* Hero title */
+      .prd-hero-section h1 {
+        font-size: clamp(1.6rem, 6vw, 2.4rem);
+      }
+
+      /* Lists inside sections */
+      .prd-section ul {
+        margin-left: 1rem;
+        font-size: 0.875rem;
+      }
+
+      /* Footer */
+      .footer {
+        padding: 2rem 1.25rem;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .prd-company-logo {
+        width: 110px;
+        height: 110px;
+      }
+      .prd-hero-section h1 {
+        font-size: 1.5rem;
+      }
+      .prd-meta-chip {
+        font-size: 0.65rem;
+        padding: 0.25rem 0.6rem;
+      }
+      .prd-section h2 {
+        font-size: 1.2rem;
+      }
+    }
+  </style>
 </head>
 <body class="prd-page">
 
   <nav class="navbar">
-    <a href="../index.html" class="nav-logo">📄 PRD<span>Project</span></a>
+    <a href="../index.html" class="nav-logo">
+      <img src="https://cdn-icons-png.flaticon.com/512/2921/2921222.png" alt="PRD Logo" class="nav-logo-img"/>
+      PRD <span>Project</span>
+    </a>
     <div class="nav-links">
       <a href="../index.html">← Home</a>
       <a href="../index.html#prds">PRD Library</a>
@@ -20,18 +193,27 @@
   </nav>
 
   <div class="prd-hero-section">
-    <div class="prd-breadcrumb">
-      <a href="../index.html">Home</a> &nbsp;/&nbsp;
-      <a href="../index.html#prds">PRD Library</a> &nbsp;/&nbsp;
-      Google Maps
+    <div class="prd-hero-left">
+      <div class="prd-breadcrumb">
+        <a href="../index.html">Home</a> &nbsp;/&nbsp;
+        <a href="../index.html#prds">PRD Library</a> &nbsp;/&nbsp;
+        Google Maps
+      </div>
+      <h1>Google Maps —<br/><em>Live Fuel Price Finder</em></h1>
+      <p class="subtitle">Surface real-time fuel prices from nearby stations inline within the navigation experience — eliminating app-switching and saving users money every fill.</p>
+      <div class="prd-meta-row">
+        <span class="prd-meta-chip">📅 Version 1.2</span>
+        <span class="prd-meta-chip">🏷️ Navigation</span>
+        <span class="prd-meta-chip">📱 Android · iOS · Web</span>
+        <span class="prd-meta-chip">🔄 Status: In Review</span>
+      </div>
     </div>
-    <h1>Google Maps —<br/><em>Live Fuel Price Finder</em></h1>
-    <p class="subtitle">Surface real-time fuel prices from nearby stations inline within the navigation experience — eliminating app-switching and saving users money every fill.</p>
-    <div class="prd-meta-row">
-      <span class="prd-meta-chip">📅 Version 1.2</span>
-      <span class="prd-meta-chip">🏷️ Navigation</span>
-      <span class="prd-meta-chip">📱 Android · iOS · Web</span>
-      <span class="prd-meta-chip">🔄 Status: In Review</span>
+    <div class="prd-hero-right">
+      <img
+        src="https://cdn-icons-png.flaticon.com/512/2875/2875433.png"
+        alt="Google Maps Logo"
+        class="prd-company-logo"
+      />
     </div>
   </div>
 
@@ -47,9 +229,9 @@
         <tr><td><strong>Document Version</strong></td><td>v1.2</td></tr>
         <tr><td><strong>Status</strong></td><td>In Review</td></tr>
         <tr><td><strong>Last Updated</strong></td><td>June 6, 2026</td></tr>
-        <tr><td><strong>Stakeholders</strong></td><td>Maps Engineering, Data Partnerships, Design (Material You), Legal & Compliance, Maps Growth Team, Android & iOS Teams</td></tr>
+        <tr><td><strong>Stakeholders</strong></td><td>Maps Engineering, Data Partnerships, Design (Material You), Legal &amp; Compliance, Maps Growth Team, Android &amp; iOS Teams</td></tr>
         <tr><td><strong>Target Platforms</strong></td><td>Android (P0), iOS (P0), Maps Web (P1)</td></tr>
-        <tr><td><strong>Target Markets</strong></td><td>India (Phase 1), United States (Phase 1), UK & Germany (Phase 2)</td></tr>
+        <tr><td><strong>Target Markets</strong></td><td>India (Phase 1), United States (Phase 1), UK &amp; Germany (Phase 2)</td></tr>
       </table>
     </div>
 
@@ -65,7 +247,17 @@
     <div class="prd-section">
       <div class="prd-section-label">Section 03</div>
       <h2>Problem Statement</h2>
+
       <p><strong>The Core Problem:</strong> Fuel prices fluctuate significantly — sometimes by ₹3–5/litre (or $0.30–0.50/gallon) across stations within a 2 km radius. Users have no easy, in-context way to compare prices while planning or during a drive.</p>
+
+      <p><strong>Who Has This Problem?</strong></p>
+      <ul style="margin-left:1.5rem; color:var(--ink-light); line-height:2.2; font-size:0.95rem; margin-bottom:1.2rem;">
+        <li><strong>Daily commuters</strong> who refuel 2–4 times a month and are price-sensitive</li>
+        <li><strong>Long-distance drivers</strong> (highway travelers, truck operators) for whom fuel is a significant trip cost</li>
+        <li><strong>Ride-share drivers</strong> (Uber, Ola, Lyft) for whom fuel is a direct operating expense</li>
+        <li><strong>Fleet managers</strong> managing cost-efficiency across multiple vehicles</li>
+      </ul>
+
       <p><strong>Evidence of the Problem:</strong></p>
       <table class="prd-table">
         <tr><th>Signal</th><th>Data Point</th></tr>
@@ -74,13 +266,20 @@
         <tr><td>Google Search data</td><td>23% of fuel-related searches contain "near me" or "cheapest"</td></tr>
         <tr><td>Competitive signal</td><td>Apple Maps launched a basic version in the US in 2024 to strong reception</td></tr>
       </table>
-      <p><strong>What Happens If We Don't Solve It:</strong> Users continue breaking Maps sessions for third-party apps. Maps loses session time and engagement. Ride-share and commercial drivers — a high-DAU, high-frequency segment — have weaker lock-in to Maps over time.</p>
+
+      <p><strong>What Happens If We Don't Solve It?</strong></p>
+      <ul style="margin-left:1.5rem; color:var(--ink-light); line-height:2.2; font-size:0.95rem;">
+        <li>Users continue breaking their Maps session to use third-party apps like GasBuddy</li>
+        <li>Maps loses session time and engagement to competitors who offer this feature</li>
+        <li>Ride-share and commercial drivers — a high-DAU, high-frequency segment — have weaker lock-in to Maps over time</li>
+        <li>Apple Maps, which already has a basic version live in the US, gains a meaningful feature differentiator</li>
+      </ul>
     </div>
 
     <!-- 4. Goals -->
     <div class="prd-section">
       <div class="prd-section-label">Section 04</div>
-      <h2>Goals & Non-Goals</h2>
+      <h2>Goals &amp; Non-Goals</h2>
       <p><strong>Business Goals</strong></p>
       <table class="prd-table">
         <tr><th>Goal</th><th>Target</th></tr>
@@ -177,7 +376,7 @@
       <div class="user-story-card"><strong>US-07 · P0</strong> — As a driver, I want to add a fuel station as a waypoint mid-navigation with one tap so my route updates automatically.</div>
       <div class="user-story-card"><strong>US-08 · P1</strong> — As a driver, I want to see the detour time added by a fuel stop so I can make an informed decision.</div>
 
-      <p style="margin:1.5rem 0 1rem; font-weight:600;">Epic 3 — Station Detail & Community</p>
+      <p style="margin:1.5rem 0 1rem; font-weight:600;">Epic 3 — Station Detail &amp; Community</p>
       <div class="user-story-card"><strong>US-09 · P1</strong> — As a driver, I want to see a station's operating hours on the fuel card so I don't navigate to a closed station.</div>
       <div class="user-story-card"><strong>US-10 · P1</strong> — As a driver, I want to report an incorrect price so the data stays accurate for the community.</div>
       <div class="user-story-card"><strong>US-11 · P2</strong> — As a driver, I want to see whether a station has a convenience store, restroom, or car wash so I can plan multi-stop breaks.</div>
@@ -202,7 +401,7 @@
 
       <div class="req-block">
         <div class="req-id">FR-03 &nbsp;<span class="priority-tag p0">P0</span></div>
-        <h4>Price Sort & Filter</h4>
+        <h4>Price Sort &amp; Filter</h4>
         <p>The fuel station list must support: Sort by Price (default), Distance, Rating. Filter by fuel type: Petrol, Diesel, CNG, EV. Filter by: Open now, Within X km radius.</p>
       </div>
 
@@ -269,7 +468,7 @@
     <!-- 10. Dependencies -->
     <div class="prd-section">
       <div class="prd-section-label">Section 10</div>
-      <h2>Dependencies & Integrations</h2>
+      <h2>Dependencies &amp; Integrations</h2>
       <table class="prd-table">
         <tr><th>Dependency</th><th>Type</th><th>Owner</th><th>Status</th></tr>
         <tr><td>IOCL / HPCL Fuel Price API</td><td>External Data Partner</td><td>Partnerships Team</td><td>Negotiation in progress</td></tr>
@@ -284,7 +483,7 @@
     <!-- 11. Assumptions & Constraints -->
     <div class="prd-section">
       <div class="prd-section-label">Section 11</div>
-      <h2>Assumptions & Constraints</h2>
+      <h2>Assumptions &amp; Constraints</h2>
       <p><strong>Assumptions:</strong></p>
       <ul style="margin-left:1.5rem; color:var(--ink-light); line-height:2.2; font-size:0.95rem; margin-bottom:1.5rem;">
         <li>Fuel price data partnerships can be finalized in target markets before launch</li>
@@ -304,7 +503,7 @@
     <!-- 12. Release Plan -->
     <div class="prd-section">
       <div class="prd-section-label">Section 12</div>
-      <h2>Release Plan & Milestones</h2>
+      <h2>Release Plan &amp; Milestones</h2>
       <table class="prd-table">
         <tr><th>Phase</th><th>Target</th><th>Scope</th><th>Rollout</th></tr>
         <tr><td><strong>MVP — Phase 1</strong></td><td>August 2026</td><td>FR-01, FR-02, FR-03, FR-05, FR-09 · India (Tier-1 cities), United States</td><td>5% → 20% → 100% over 6 weeks. Android first, iOS 2 weeks later.</td></tr>
@@ -345,7 +544,7 @@
 
   <footer class="footer">
     <div class="footer-inner">
-      <div class="footer-brand">📄 PRDProject</div>
+      <div class="footer-brand">📄 PRD Project</div>
       <p>Built as a pre-MBA portfolio project to master Product Management fundamentals through hands-on PRD writing.</p>
       <a href="../index.html" style="color:var(--yellow); font-weight:600; text-decoration:none;">← Back to Home</a>
     </div>
