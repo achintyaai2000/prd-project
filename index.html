@@ -1,0 +1,299 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>PRD Project — Product Requirement Documents</title>
+  <link rel="stylesheet" href="style.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,600;0,9..144,800;1,9..144,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav class="navbar">
+    <a href="index.html" class="nav-logo">📄 PRD<span>Project</span></a>
+    <div class="nav-links">
+      <a href="#about">About</a>
+      <a href="#comics">Why PRDs</a>
+      <a href="#prds">PRD Library</a>
+    </div>
+  </nav>
+
+  <!-- HERO -->
+  <header class="hero">
+    <div class="hero-bg-grid"></div>
+    <div class="hero-content">
+      <div class="hero-badge">MBA Prep · Product Management</div>
+      <h1 class="hero-title">
+        Product<br/>
+        <em>Requirement</em><br/>
+        Documents
+      </h1>
+      <p class="hero-subtitle">A curated library of professional PRDs crafted for real-world products — built to understand the craft of product thinking.</p>
+      <a href="#prds" class="hero-cta">Explore PRDs ↓</a>
+    </div>
+    <div class="hero-decoration">
+      <div class="deco-card deco-1">🎯 User Goals</div>
+      <div class="deco-card deco-2">📊 Success Metrics</div>
+      <div class="deco-card deco-3">🗺️ User Journey</div>
+      <div class="deco-card deco-4">✅ Requirements</div>
+    </div>
+  </header>
+
+  <!-- ABOUT PRDs -->
+  <section class="about" id="about">
+    <div class="section-label">What is a PRD?</div>
+    <div class="about-grid">
+      <div class="about-text">
+        <h2>The Blueprint <em>Every</em> Product Needs</h2>
+        <p>A <strong>Product Requirement Document (PRD)</strong> is the single source of truth that a Product Manager writes before a single line of code is typed. It answers the most important question in product development — <em>not how</em> to build something, but <strong>what</strong> to build and <strong>why</strong>.</p>
+        <p>Think of it like an architect's blueprint. Engineers, designers, marketers, and leadership all align around the PRD to ensure everyone is building the same thing — for the same user — with the same goal in mind.</p>
+        <p>Product Managers at Google, Amazon, Microsoft, and Uber spend a significant part of their role writing, refining, and defending PRDs. They are the language of product strategy made concrete.</p>
+      </div>
+      <div class="about-cards">
+        <div class="info-card">
+          <span class="card-icon">🧭</span>
+          <h3>Alignment</h3>
+          <p>Keeps all teams — engineering, design, marketing — pointing in the same direction</p>
+        </div>
+        <div class="info-card">
+          <span class="card-icon">🚧</span>
+          <h3>Scope Control</h3>
+          <p>Defines what's IN and what's OUT, preventing scope creep from killing timelines</p>
+        </div>
+        <div class="info-card">
+          <span class="card-icon">📐</span>
+          <h3>Structure</h3>
+          <p>Provides a professional framework: problem, users, requirements, metrics</p>
+        </div>
+        <div class="info-card">
+          <span class="card-icon">🔁</span>
+          <h3>Accountability</h3>
+          <p>Documents the WHY behind every decision so teams can revisit it months later</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- COMIC SECTION -->
+  <section class="comics" id="comics">
+    <div class="section-label">The Reality of PRDs</div>
+    <h2 class="section-title">Why PRDs Exist<br/><em>(According to Developers)</em></h2>
+    <p class="section-subtitle">Every software team has lived these moments. PRDs exist to prevent exactly this chaos.</p>
+
+    <div class="comics-grid">
+
+      <div class="comic-card">
+        <div class="comic-illustration">
+          <div class="comic-scene scene-1">
+            <div class="comic-panel">
+              <div class="stick-figure pm">
+                <div class="head"></div><div class="body"></div><div class="arms"></div><div class="legs"></div>
+                <div class="label">PM</div>
+              </div>
+              <div class="speech-bubble left">"Build me a button that makes users happy!"</div>
+            </div>
+            <div class="comic-panel panel-2">
+              <div class="stick-figure dev">
+                <div class="head"></div><div class="body"></div><div class="arms"></div><div class="legs"></div>
+                <div class="label">DEV</div>
+              </div>
+              <div class="thought-bubble">"...a button that dispenses pizza?"</div>
+              <div class="monitor">
+                <div class="screen">🍕</div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="comic-caption">
+          <h3>"Make Users Happy"</h3>
+          <p>Without a PRD, "make users happy" becomes 47 different interpretations. One dev builds confetti. Another builds a pizza button. The PRD says: <em>increase session time by 20%.</em></p>
+        </div>
+      </div>
+
+      <div class="comic-card">
+        <div class="comic-illustration">
+          <div class="comic-scene scene-2">
+            <div class="iceberg">
+              <div class="ice-top">
+                <span>PRD says:<br/>"Add search"</span>
+              </div>
+              <div class="ice-bottom">
+                <span>Fuzzy search • Filters • Autocomplete • History • Voice input • Trending queries • Search analytics • A/B testing • Spell check • Synonyms...</span>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="comic-caption">
+          <h3>Scope Creep Iceberg</h3>
+          <p>Every feature request is an iceberg. The PRD defines exactly which 10% is above water and ships it. Non-Goals are just as important as Goals.</p>
+        </div>
+      </div>
+
+      <div class="comic-card">
+        <div class="comic-illustration">
+          <div class="comic-scene scene-3">
+            <div class="timeline-comic">
+              <div class="timeline-item">
+                <div class="week-badge">Week 1</div>
+                <div class="bubble">"Here's the idea!"</div>
+              </div>
+              <div class="timeline-item">
+                <div class="week-badge">Week 3</div>
+                <div class="bubble">"Actually, can we also add—"</div>
+              </div>
+              <div class="timeline-item">
+                <div class="week-badge">Week 6</div>
+                <div class="bubble">"One more small thing..."</div>
+              </div>
+              <div class="timeline-item boom">
+                <div class="week-badge red">Week 12</div>
+                <div class="bubble red-bubble">💥 "Why isn't it done yet?!"</div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="comic-caption">
+          <h3>The Deadline Paradox</h3>
+          <p>Features without a PRD grow endlessly. A PRD locks scope at Week 1 so Week 12 actually ships — instead of becoming a legend of eternal development.</p>
+        </div>
+      </div>
+
+      <div class="comic-card">
+        <div class="comic-illustration">
+          <div class="comic-scene scene-4">
+            <div class="team-chaos">
+              <div class="chaos-figure" style="--c:#FF6B6B">
+                <div class="chaos-head">🎨</div>
+                <div class="chaos-label">Designer</div>
+                <div class="chaos-thought">"Make it minimal!"</div>
+              </div>
+              <div class="chaos-figure" style="--c:#4ECDC4">
+                <div class="chaos-head">⚙️</div>
+                <div class="chaos-label">Engineer</div>
+                <div class="chaos-thought">"Make it scalable!"</div>
+              </div>
+              <div class="chaos-figure" style="--c:#FFE66D">
+                <div class="chaos-head">📈</div>
+                <div class="chaos-label">Marketing</div>
+                <div class="chaos-thought">"Make it viral!"</div>
+              </div>
+              <div class="prd-hero">
+                <div class="prd-badge">📄 PRD</div>
+                <div class="prd-text">"Make it useful for Persona A, measured by Metric B, by Date C."</div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="comic-caption">
+          <h3>Everyone Has An Opinion</h3>
+          <p>Three teams, seven opinions, zero alignment. The PRD is the referee. It doesn't care about opinions — only about the user's problem and measurable outcomes.</p>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- PRD LIBRARY -->
+  <section class="prd-library" id="prds">
+    <div class="section-label">The Collection</div>
+    <h2 class="section-title">PRD <em>Library</em></h2>
+    <p class="section-subtitle">Each document below is a full, professional-grade PRD written for a real product feature at a top tech company.</p>
+
+    <div class="company-group">
+      <div class="company-header">
+        <div class="company-logo google">G</div>
+        <h3>Google</h3>
+      </div>
+      <div class="prd-cards">
+        <a href="pages/google-maps-fuel.html" class="prd-card">
+          <div class="prd-card-tag">Navigation</div>
+          <h4>Google Maps — Live Fuel Price Finder</h4>
+          <p>Surface real-time fuel prices from nearby stations inline within the navigation experience</p>
+          <div class="prd-card-meta">
+            <span>📊 15 Sections</span>
+            <span>🎯 P0–P2 Features</span>
+          </div>
+          <div class="prd-card-arrow">Read PRD →</div>
+        </a>
+        <a href="pages/coming-soon.html" class="prd-card faded">
+          <div class="prd-card-tag">Coming Soon</div>
+          <h4>Google Search — AI Overview Relevance Filter</h4>
+          <p>Let users control when AI-generated overviews appear in search results</p>
+          <div class="prd-card-meta">
+            <span>🚧 In Progress</span>
+          </div>
+          <div class="prd-card-arrow">Coming Soon</div>
+        </a>
+      </div>
+    </div>
+
+    <div class="company-group">
+      <div class="company-header">
+        <div class="company-logo amazon">a</div>
+        <h3>Amazon</h3>
+      </div>
+      <div class="prd-cards">
+        <a href="pages/coming-soon.html" class="prd-card faded">
+          <div class="prd-card-tag">Coming Soon</div>
+          <h4>Amazon — Subscribe & Save Price Lock</h4>
+          <p>Allow users to lock subscription prices for 6 months during volatile market periods</p>
+          <div class="prd-card-meta">
+            <span>🚧 In Progress</span>
+          </div>
+          <div class="prd-card-arrow">Coming Soon</div>
+        </a>
+      </div>
+    </div>
+
+    <div class="company-group">
+      <div class="company-header">
+        <div class="company-logo uber">U</div>
+        <h3>Uber</h3>
+      </div>
+      <div class="prd-cards">
+        <a href="pages/coming-soon.html" class="prd-card faded">
+          <div class="prd-card-tag">Coming Soon</div>
+          <h4>Uber — Scheduled Ride Price Guarantee</h4>
+          <p>Guarantee the fare shown at scheduling time, eliminating surge anxiety for pre-planned rides</p>
+          <div class="prd-card-meta">
+            <span>🚧 In Progress</span>
+          </div>
+          <div class="prd-card-arrow">Coming Soon</div>
+        </a>
+      </div>
+    </div>
+
+    <div class="company-group">
+      <div class="company-header">
+        <div class="company-logo spotify">♫</div>
+        <h3>Spotify</h3>
+      </div>
+      <div class="prd-cards">
+        <a href="pages/coming-soon.html" class="prd-card faded">
+          <div class="prd-card-tag">Coming Soon</div>
+          <h4>Spotify — Collaborative Playlist Voting</h4>
+          <p>Let group playlist members vote songs up/down so the best tracks rise to the top democratically</p>
+          <div class="prd-card-meta">
+            <span>🚧 In Progress</span>
+          </div>
+          <div class="prd-card-arrow">Coming Soon</div>
+        </a>
+      </div>
+    </div>
+
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <div class="footer-inner">
+      <div class="footer-brand">📄 PRDProject</div>
+      <p>Built as a pre-MBA portfolio project to master Product Management fundamentals through hands-on PRD writing.</p>
+      <p class="footer-note">All PRDs are original work for educational purposes. Products and companies referenced are trademarks of their respective owners.</p>
+    </div>
+  </footer>
+
+</body>
+</html>

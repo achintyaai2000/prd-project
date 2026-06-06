@@ -1,0 +1,355 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Google Maps — Live Fuel Price Finder | PRD Project</title>
+  <link rel="stylesheet" href="../style.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,600;0,9..144,800;1,9..144,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+</head>
+<body class="prd-page">
+
+  <nav class="navbar">
+    <a href="../index.html" class="nav-logo">📄 PRD<span>Project</span></a>
+    <div class="nav-links">
+      <a href="../index.html">← Home</a>
+      <a href="../index.html#prds">PRD Library</a>
+    </div>
+  </nav>
+
+  <div class="prd-hero-section">
+    <div class="prd-breadcrumb">
+      <a href="../index.html">Home</a> &nbsp;/&nbsp;
+      <a href="../index.html#prds">PRD Library</a> &nbsp;/&nbsp;
+      Google Maps
+    </div>
+    <h1>Google Maps —<br/><em>Live Fuel Price Finder</em></h1>
+    <p class="subtitle">Surface real-time fuel prices from nearby stations inline within the navigation experience — eliminating app-switching and saving users money every fill.</p>
+    <div class="prd-meta-row">
+      <span class="prd-meta-chip">📅 Version 1.2</span>
+      <span class="prd-meta-chip">🏷️ Navigation</span>
+      <span class="prd-meta-chip">📱 Android · iOS · Web</span>
+      <span class="prd-meta-chip">🔄 Status: In Review</span>
+    </div>
+  </div>
+
+  <div class="prd-content">
+
+    <!-- 1. Document Header -->
+    <div class="prd-section">
+      <div class="prd-section-label">Section 01</div>
+      <h2>Document Header</h2>
+      <table class="prd-table">
+        <tr><th>Field</th><th>Details</th></tr>
+        <tr><td><strong>Product Name</strong></td><td>Live Fuel Price Finder — Google Maps</td></tr>
+        <tr><td><strong>Document Version</strong></td><td>v1.2</td></tr>
+        <tr><td><strong>Status</strong></td><td>In Review</td></tr>
+        <tr><td><strong>Last Updated</strong></td><td>June 6, 2026</td></tr>
+        <tr><td><strong>Stakeholders</strong></td><td>Maps Engineering, Data Partnerships, Design (Material You), Legal & Compliance, Maps Growth Team, Android & iOS Teams</td></tr>
+        <tr><td><strong>Target Platforms</strong></td><td>Android (P0), iOS (P0), Maps Web (P1)</td></tr>
+        <tr><td><strong>Target Markets</strong></td><td>India (Phase 1), United States (Phase 1), UK & Germany (Phase 2)</td></tr>
+      </table>
+    </div>
+
+    <!-- 2. Executive Summary -->
+    <div class="prd-section">
+      <div class="prd-section-label">Section 02</div>
+      <h2>Executive Summary</h2>
+      <p>Google Maps already helps billions of users navigate to their destination. However, once a user decides to drive, one of the most frequent real-world decisions they face is <strong>where to fuel up — at what price</strong>. Today, users must exit Maps, open a separate app (GasBuddy, Petrowatch, etc.), compare prices, and mentally plan a detour — breaking their navigation flow entirely.</p>
+      <p>This PRD defines the <strong>Live Fuel Price Finder</strong> feature for Google Maps, which will surface real-time fuel prices from nearby stations <em>inline within the navigation experience</em> — eliminating the need to leave the app, saving users money, and significantly increasing Maps session time and engagement.</p>
+    </div>
+
+    <!-- 3. Problem Statement -->
+    <div class="prd-section">
+      <div class="prd-section-label">Section 03</div>
+      <h2>Problem Statement</h2>
+      <p><strong>The Core Problem:</strong> Fuel prices fluctuate significantly — sometimes by ₹3–5/litre (or $0.30–0.50/gallon) across stations within a 2 km radius. Users have no easy, in-context way to compare prices while planning or during a drive.</p>
+      <p><strong>Evidence of the Problem:</strong></p>
+      <table class="prd-table">
+        <tr><th>Signal</th><th>Data Point</th></tr>
+        <tr><td>GasBuddy downloads</td><td>150M+ globally — clear demand for this information</td></tr>
+        <tr><td>Maps UXR Survey (2025)</td><td>68% of Maps users said they would use this if it existed</td></tr>
+        <tr><td>Google Search data</td><td>23% of fuel-related searches contain "near me" or "cheapest"</td></tr>
+        <tr><td>Competitive signal</td><td>Apple Maps launched a basic version in the US in 2024 to strong reception</td></tr>
+      </table>
+      <p><strong>What Happens If We Don't Solve It:</strong> Users continue breaking Maps sessions for third-party apps. Maps loses session time and engagement. Ride-share and commercial drivers — a high-DAU, high-frequency segment — have weaker lock-in to Maps over time.</p>
+    </div>
+
+    <!-- 4. Goals -->
+    <div class="prd-section">
+      <div class="prd-section-label">Section 04</div>
+      <h2>Goals & Non-Goals</h2>
+      <p><strong>Business Goals</strong></p>
+      <table class="prd-table">
+        <tr><th>Goal</th><th>Target</th></tr>
+        <tr><td>Increase average Maps session duration (driving users)</td><td>+8–12%</td></tr>
+        <tr><td>Increase petrol station place page visits within Maps</td><td>+15%</td></tr>
+        <tr><td>Establish fuel price data partnerships</td><td>≥ 2 partners per market before launch</td></tr>
+        <tr><td>Increase Maps DAU in transportation category</td><td>+5% in 6 months post-launch</td></tr>
+      </table>
+      <br/>
+      <p><strong>🚫 Non-Goals (Out of Scope for v1)</strong></p>
+      <ul style="margin-left:1.5rem; color:var(--ink-light); line-height:2; font-size:0.95rem;">
+        <li>Loyalty point tracking or fuel reward program integrations</li>
+        <li>In-app payment for fuel</li>
+        <li>Fuel price prediction / forecasting</li>
+        <li>EV charging station pricing (separate roadmap item)</li>
+        <li>Integration with vehicle OBD data (fuel level detection)</li>
+      </ul>
+    </div>
+
+    <!-- 5. Success Metrics -->
+    <div class="prd-section">
+      <div class="prd-section-label">Section 05</div>
+      <h2>Success Metrics / KPIs</h2>
+      <table class="prd-table">
+        <tr><th>Metric</th><th>Baseline</th><th>Target (6 months)</th><th>Method</th></tr>
+        <tr><td>Fuel station CTR from Maps</td><td>~2.1%</td><td>5.5%</td><td>Internal analytics</td></tr>
+        <tr><td>Avg session duration (driving)</td><td>11.2 min</td><td>12.5 min</td><td>Firebase</td></tr>
+        <tr><td>Weekly feature adoption rate</td><td>N/A</td><td>18% of driving users</td><td>Feature flag analytics</td></tr>
+        <tr><td>User satisfaction (feature-specific)</td><td>N/A</td><td>≥ 4.2 / 5.0</td><td>In-app survey (500 sample)</td></tr>
+        <tr><td>Price data freshness (90th percentile)</td><td>N/A</td><td>&lt; 4 hours</td><td>Data pipeline monitoring</td></tr>
+        <tr><td>Crash-free session rate</td><td>N/A</td><td>≥ 99.5%</td><td>Crashlytics</td></tr>
+      </table>
+    </div>
+
+    <!-- 6. User Personas -->
+    <div class="prd-section">
+      <div class="prd-section-label">Section 06</div>
+      <h2>User Personas</h2>
+
+      <div class="persona-card">
+        <div class="persona-header">
+          <div class="persona-avatar">🚗</div>
+          <div>
+            <div class="persona-name">Rajesh, 34 — The Daily Commuter</div>
+            <div class="persona-role">Bengaluru · Maruti Swift (Petrol) · Uses Maps 5–6x/week</div>
+          </div>
+        </div>
+        <p><span class="persona-label">Pain Point:</span> Fuel prices vary wildly across stations on his route. He often regrets filling up at one station when he passes a cheaper one 500m later.</p>
+        <p><span class="persona-label">Goal:</span> Quickly know which station on his route is cheapest before he needs to refuel.</p>
+        <p><span class="persona-label">Tech Comfort:</span> High — uses UPI, Zomato, Swiggy fluently.</p>
+      </div>
+
+      <div class="persona-card">
+        <div class="persona-header">
+          <div class="persona-avatar">🛣️</div>
+          <div>
+            <div class="persona-name">Priya, 28 — The Weekend Highway Traveler</div>
+            <div class="persona-role">Mumbai · Hyundai Creta · 2–3 road trips/month (200–400 km)</div>
+          </div>
+        </div>
+        <p><span class="persona-label">Pain Point:</span> On highways, she's unsure whether to fill up now or wait for a cheaper pump. Running out mid-highway is a real anxiety.</p>
+        <p><span class="persona-label">Goal:</span> Plan fuel stops proactively during long navigation with price visibility along the route.</p>
+        <p><span class="persona-label">Tech Comfort:</span> Very high.</p>
+      </div>
+
+      <div class="persona-card">
+        <div class="persona-header">
+          <div class="persona-avatar">🚖</div>
+          <div>
+            <div class="persona-name">Suresh, 41 — The Ride-Share Driver</div>
+            <div class="persona-role">Delhi · Honda City (CNG + Petrol) · Drives 10–14 hours/day</div>
+          </div>
+        </div>
+        <p><span class="persona-label">Pain Point:</span> Switching between Maps and fuel apps during a busy shift is dangerous and disruptive. Fuel is his #1 operating cost.</p>
+        <p><span class="persona-label">Goal:</span> See fuel prices inline so he can decide on a detour mid-shift without breaking flow.</p>
+        <p><span class="persona-label">Tech Comfort:</span> Medium — prefers simple, fast UI.</p>
+      </div>
+    </div>
+
+    <!-- 7. User Stories -->
+    <div class="prd-section">
+      <div class="prd-section-label">Section 07</div>
+      <h2>User Stories</h2>
+
+      <p style="margin-bottom:1rem; font-weight:600;">Epic 1 — Fuel Price Discovery</p>
+      <div class="user-story-card"><strong>US-01 · P0</strong> — As a driver, I want to see fuel prices for nearby stations on my Maps home screen so I can make a quick decision before starting my trip.</div>
+      <div class="user-story-card"><strong>US-02 · P0</strong> — As a driver, I want fuel stations to be sorted by price (cheapest first) so I don't have to manually compare.</div>
+      <div class="user-story-card"><strong>US-03 · P1</strong> — As a driver, I want to see when a price was last updated so I can trust whether it's current.</div>
+      <div class="user-story-card"><strong>US-04 · P1</strong> — As a driver, I want to filter by fuel type (petrol / diesel / CNG / EV) so I only see relevant prices.</div>
+      <div class="user-story-card"><strong>US-05 · P2</strong> — As a driver, I want to see a price trend (↑↓ vs yesterday) so I can decide to refuel now or wait.</div>
+
+      <p style="margin:1.5rem 0 1rem; font-weight:600;">Epic 2 — In-Navigation Fuel Alerts</p>
+      <div class="user-story-card"><strong>US-06 · P0</strong> — As a long-distance driver on active navigation, I want a proactive prompt ("Cheap fuel in 3 km — ₹94.5/L") so I can decide to stop without searching.</div>
+      <div class="user-story-card"><strong>US-07 · P0</strong> — As a driver, I want to add a fuel station as a waypoint mid-navigation with one tap so my route updates automatically.</div>
+      <div class="user-story-card"><strong>US-08 · P1</strong> — As a driver, I want to see the detour time added by a fuel stop so I can make an informed decision.</div>
+
+      <p style="margin:1.5rem 0 1rem; font-weight:600;">Epic 3 — Station Detail & Community</p>
+      <div class="user-story-card"><strong>US-09 · P1</strong> — As a driver, I want to see a station's operating hours on the fuel card so I don't navigate to a closed station.</div>
+      <div class="user-story-card"><strong>US-10 · P1</strong> — As a driver, I want to report an incorrect price so the data stays accurate for the community.</div>
+      <div class="user-story-card"><strong>US-11 · P2</strong> — As a driver, I want to see whether a station has a convenience store, restroom, or car wash so I can plan multi-stop breaks.</div>
+    </div>
+
+    <!-- 8. Functional Requirements -->
+    <div class="prd-section">
+      <div class="prd-section-label">Section 08</div>
+      <h2>Functional Requirements</h2>
+
+      <div class="req-block">
+        <div class="req-id">FR-01 &nbsp;<span class="priority-tag p0">P0</span></div>
+        <h4>Fuel Price Data Ingestion</h4>
+        <p>The system shall ingest real-time fuel price data from verified partner sources (IOCL API, HPCL API, third-party aggregators). Data must be refreshed at minimum every 4 hours per station. Each record must contain: station ID, fuel type, price per litre, timestamp, and source.</p>
+      </div>
+
+      <div class="req-block">
+        <div class="req-id">FR-02 &nbsp;<span class="priority-tag p0">P0</span></div>
+        <h4>Fuel Station Surface on Maps Home</h4>
+        <p>A "Fuel Prices" chip or card shall appear on the Maps home screen for users who have driving as their default travel mode, or who have recently searched for fuel. Tapping it opens a list of up to 10 nearby stations sorted by price.</p>
+      </div>
+
+      <div class="req-block">
+        <div class="req-id">FR-03 &nbsp;<span class="priority-tag p0">P0</span></div>
+        <h4>Price Sort & Filter</h4>
+        <p>The fuel station list must support: Sort by Price (default), Distance, Rating. Filter by fuel type: Petrol, Diesel, CNG, EV. Filter by: Open now, Within X km radius.</p>
+      </div>
+
+      <div class="req-block">
+        <div class="req-id">FR-04 &nbsp;<span class="priority-tag p0">P0</span></div>
+        <h4>Route-Aware Fuel Suggestions During Navigation</h4>
+        <p>During active navigation, the system shall identify fuel stations within 500m of the route and surface up to 3 suggestions as a non-intrusive bottom-sheet card. The card must show: station name, fuel price, distance from current location, and detour time added.</p>
+      </div>
+
+      <div class="req-block">
+        <div class="req-id">FR-05 &nbsp;<span class="priority-tag p0">P0</span></div>
+        <h4>One-Tap Waypoint Addition</h4>
+        <p>From any fuel station suggestion card, the user shall be able to add the station as a waypoint with a single tap. The navigation route must update within 3 seconds of tapping.</p>
+      </div>
+
+      <div class="req-block p1-block">
+        <div class="req-id">FR-06 &nbsp;<span class="priority-tag p1">P1</span></div>
+        <h4>Price Freshness Indicator</h4>
+        <p>Every price displayed must show a freshness label: "Updated 2 hrs ago", "Updated today", or "Price unverified" if data is older than 12 hours. Stale prices (&gt;12 hours) shall be visually distinguished with grey text and an asterisk.</p>
+      </div>
+
+      <div class="req-block p1-block">
+        <div class="req-id">FR-07 &nbsp;<span class="priority-tag p1">P1</span></div>
+        <h4>User Price Reporting</h4>
+        <p>Users shall be able to report a price discrepancy from a station's detail page. The form collects: correct price, fuel type, and optionally a photo. Reports must pass through the automated + human review queue within 2 hours.</p>
+      </div>
+
+      <div class="req-block p2-block">
+        <div class="req-id">FR-08 &nbsp;<span class="priority-tag p2">P2</span></div>
+        <h4>Price Trend Indicator</h4>
+        <p>Each station listing shall show a trend indicator: ↑ (higher than 24h ago), ↓ (lower), → (unchanged). Clicking the indicator shows a 7-day mini price chart for that station.</p>
+      </div>
+
+      <div class="req-block p1-block">
+        <div class="req-id">FR-09 &nbsp;<span class="priority-tag p1">P1</span></div>
+        <h4>Fuel Type Personalization</h4>
+        <p>The system shall remember the user's fuel type preference (set during first use or in Settings) and default to showing that fuel type across all fuel-related surfaces without requiring re-selection.</p>
+      </div>
+
+      <div class="req-block p1-block">
+        <div class="req-id">FR-10 &nbsp;<span class="priority-tag p1">P1</span></div>
+        <h4>Offline Graceful Degradation</h4>
+        <p>If the user is offline or data is unavailable, fuel price features shall gracefully hide rather than crash. The last cached prices (up to 6 hours old) may be shown with a clear "Last known price" label.</p>
+      </div>
+    </div>
+
+    <!-- 9. NFRs -->
+    <div class="prd-section">
+      <div class="prd-section-label">Section 09</div>
+      <h2>Non-Functional Requirements</h2>
+      <table class="prd-table">
+        <tr><th>NFR ID</th><th>Category</th><th>Requirement</th></tr>
+        <tr><td>NFR-01</td><td>Performance</td><td>Fuel station list must load within 1.5 seconds on a 4G connection</td></tr>
+        <tr><td>NFR-02</td><td>Performance</td><td>Waypoint addition must update route within 3 seconds</td></tr>
+        <tr><td>NFR-03</td><td>Scalability</td><td>Handle 50M+ price fetch requests/day at peak (India + US combined)</td></tr>
+        <tr><td>NFR-04</td><td>Data Accuracy</td><td>≥ 90% of displayed prices must be within ₹1/L of actual pump price</td></tr>
+        <tr><td>NFR-05</td><td>Availability</td><td>Fuel data service must maintain 99.9% uptime (max ~8.7 hrs downtime/year)</td></tr>
+        <tr><td>NFR-06</td><td>Security</td><td>No PII collected via price reporting; all reports anonymized before storage</td></tr>
+        <tr><td>NFR-07</td><td>Accessibility</td><td>All fuel UI elements must comply with WCAG 2.1 AA (screen reader, contrast)</td></tr>
+        <tr><td>NFR-08</td><td>Battery</td><td>Background price refresh must consume &lt;1% additional battery per hour</td></tr>
+      </table>
+    </div>
+
+    <!-- 10. Dependencies -->
+    <div class="prd-section">
+      <div class="prd-section-label">Section 10</div>
+      <h2>Dependencies & Integrations</h2>
+      <table class="prd-table">
+        <tr><th>Dependency</th><th>Type</th><th>Owner</th><th>Status</th></tr>
+        <tr><td>IOCL / HPCL Fuel Price API</td><td>External Data Partner</td><td>Partnerships Team</td><td>Negotiation in progress</td></tr>
+        <tr><td>GasBuddy Data Feed</td><td>Third-party</td><td>Data Partnerships</td><td>Letter of Intent signed</td></tr>
+        <tr><td>Google Maps Places API</td><td>Internal</td><td>Maps Platform Team</td><td>Available</td></tr>
+        <tr><td>Maps Navigation SDK</td><td>Internal</td><td>Navigation Eng Team</td><td>Available</td></tr>
+        <tr><td>Google Crowdsource Platform</td><td>Internal</td><td>Crowdsource Team</td><td>Integration needed</td></tr>
+        <tr><td>Firebase Analytics</td><td>Internal</td><td>Growth Eng</td><td>Available</td></tr>
+      </table>
+    </div>
+
+    <!-- 11. Assumptions & Constraints -->
+    <div class="prd-section">
+      <div class="prd-section-label">Section 11</div>
+      <h2>Assumptions & Constraints</h2>
+      <p><strong>Assumptions:</strong></p>
+      <ul style="margin-left:1.5rem; color:var(--ink-light); line-height:2.2; font-size:0.95rem; margin-bottom:1.5rem;">
+        <li>Fuel price data partnerships can be finalized in target markets before launch</li>
+        <li>Users in target markets have Android 9+ or iOS 14+ devices</li>
+        <li>Crowdsourced price reports will maintain accuracy with automated moderation</li>
+        <li>Data partner APIs will maintain &lt;4-hour refresh cycles as contractually agreed</li>
+      </ul>
+      <p><strong>Constraints:</strong></p>
+      <ul style="margin-left:1.5rem; color:var(--ink-light); line-height:2.2; font-size:0.95rem;">
+        <li>Timeline: MVP (P0 features) must ship within Q3 2026 to pre-empt Apple Maps expansion</li>
+        <li>Data partnership costs must not exceed budget threshold defined by Finance team</li>
+        <li>In EU markets, price display must comply with consumer pricing transparency laws</li>
+        <li>In markets without data partners, feature launches with crowdsourced-only data</li>
+      </ul>
+    </div>
+
+    <!-- 12. Release Plan -->
+    <div class="prd-section">
+      <div class="prd-section-label">Section 12</div>
+      <h2>Release Plan & Milestones</h2>
+      <table class="prd-table">
+        <tr><th>Phase</th><th>Target</th><th>Scope</th><th>Rollout</th></tr>
+        <tr><td><strong>MVP — Phase 1</strong></td><td>August 2026</td><td>FR-01, FR-02, FR-03, FR-05, FR-09 · India (Tier-1 cities), United States</td><td>5% → 20% → 100% over 6 weeks. Android first, iOS 2 weeks later.</td></tr>
+        <tr><td><strong>Phase 2</strong></td><td>October 2026</td><td>FR-04, FR-06, FR-07, FR-08 (in-navigation + price trends)</td><td>Full rollout in Phase 1 markets</td></tr>
+        <tr><td><strong>Phase 3</strong></td><td>Q1 2027</td><td>FR-10, Maps Web, broader market expansion (UK, Germany, Australia)</td><td>Market-by-market based on partner readiness</td></tr>
+      </table>
+    </div>
+
+    <!-- 13. Open Questions -->
+    <div class="prd-section">
+      <div class="prd-section-label">Section 13</div>
+      <h2>Open Questions</h2>
+      <table class="prd-table">
+        <tr><th>#</th><th>Question</th><th>Owner</th><th>Due</th></tr>
+        <tr><td>OQ-01</td><td>Which data partner will be primary for India — IOCL direct or aggregator?</td><td>Partnerships</td><td>June 20, 2026</td></tr>
+        <tr><td>OQ-02</td><td>Should prices include taxes or show pre-tax? (Regulatory clarification for EU)</td><td>Legal</td><td>June 25, 2026</td></tr>
+        <tr><td>OQ-03</td><td>What is the fallback for markets with no partner AND low crowdsource density?</td><td>PM + Eng</td><td>July 5, 2026</td></tr>
+        <tr><td>OQ-04</td><td>Will price reporting be gamified (crowdsource points)?</td><td>Growth PM</td><td>July 10, 2026</td></tr>
+        <tr><td>OQ-05</td><td>Does EV charging price data fall under this PRD or the EV roadmap?</td><td>PM Lead</td><td>June 15, 2026</td></tr>
+      </table>
+    </div>
+
+    <!-- 14. Appendix -->
+    <div class="prd-section">
+      <div class="prd-section-label">Section 14</div>
+      <h2>Appendix</h2>
+      <table class="prd-table">
+        <tr><th>Item</th><th>Description</th></tr>
+        <tr><td>Competitive Analysis</td><td>GasBuddy, Waze Fuel Prices, Apple Maps Fuel (US), Petrowatch India</td></tr>
+        <tr><td>UXR Study</td><td>"Fuel Discovery Patterns in Google Maps Users" — Internal, May 2026</td></tr>
+        <tr><td>Related PRDs</td><td>EV Charging Station Locator (v0.3), Maps Waypoint Enhancements (v2.1)</td></tr>
+        <tr><td>Legal Review</td><td>Fuel Price Display Compliance — Multi-market (pending)</td></tr>
+        <tr><td>Design Files</td><td>Figma — Material You Fuel UI Kit [Link Placeholder]</td></tr>
+      </table>
+    </div>
+
+  </div><!-- /prd-content -->
+
+  <footer class="footer">
+    <div class="footer-inner">
+      <div class="footer-brand">📄 PRDProject</div>
+      <p>Built as a pre-MBA portfolio project to master Product Management fundamentals through hands-on PRD writing.</p>
+      <a href="../index.html" style="color:var(--yellow); font-weight:600; text-decoration:none;">← Back to Home</a>
+    </div>
+  </footer>
+
+</body>
+</html>
