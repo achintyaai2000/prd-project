@@ -794,7 +794,7 @@ em { font-style: italic; color: var(--accent); }
 .company-logo.google { background: #4285F4; color: white; }
 .company-logo.amazon { background: #FF9900; color: white; font-style: italic; font-family: Georgia, serif; }
 .company-logo.uber { background: #000; color: white; }
-.company-logo.spotify { background: #1DB954; color: white; }
+.company-logo.zomato { background: red; color: white; }
 
 .company-header h3 {
   font-size: 1.3rem;
@@ -918,6 +918,7 @@ em { font-style: italic; color: var(--accent); }
   color: rgba(245,240,232,0.65);
   max-width: 580px;
   line-height: 1.7;
+  text-align: justify;
   position: relative;
 }
 .prd-meta-row {

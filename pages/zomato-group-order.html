@@ -1,0 +1,523 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Zomato — Group Order Split Bill | PRD Project</title>
+  <link rel="stylesheet" href="../style.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,600;0,9..144,800;1,9..144,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+  <style>
+    /* ── Navbar: logo left, links right ── */
+    .prd-page .navbar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .prd-page .navbar .nav-center { display: none; }
+
+    /* ── Hero: text left, logo right ── */
+    .prd-hero-section {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 3rem;
+    }
+    .prd-hero-left { flex: 1; position: relative; z-index: 1; }
+    .prd-hero-right {
+      flex-shrink: 0;
+      position: relative;
+      z-index: 1;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .prd-company-logo {
+      width: 260px;
+      height: 260px;
+      object-fit: contain;
+      opacity: 0.92;
+      filter: drop-shadow(0 8px 32px rgba(0,0,0,0.4));
+      animation: floatLogo 3s ease-in-out infinite;
+    }
+    @keyframes floatLogo {
+      0%, 100% { transform: translateY(0px); }
+      50%       { transform: translateY(-16px); }
+    }
+
+    /* ── PRD content: tables scroll on small screens ── */
+    .prd-table-wrapper {
+      width: 100%;
+      overflow-x: auto;
+      -webkit-overflow-scrolling: touch;
+    }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 900px) {
+      .prd-page .navbar { padding: 0.9rem 1.25rem; }
+      .prd-page .navbar .nav-links { display: flex; gap: 1rem; }
+      .prd-page .navbar .nav-links a { font-size: 0.8rem; }
+
+      .prd-hero-section {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 2rem;
+        padding: 3rem 1.5rem 2.5rem;
+      }
+      .prd-hero-right { width: 100%; justify-content: center; }
+      .prd-company-logo { width: 160px; height: 160px; }
+      .prd-content { padding: 2rem 1.25rem; }
+      .prd-section h2 { font-size: 1.4rem; }
+      .prd-table {
+        display: block;
+        overflow-x: auto;
+        -webkit-overflow-scrolling: touch;
+        white-space: nowrap;
+        font-size: 0.8rem;
+      }
+      .prd-table th, .prd-table td { padding: 0.65rem 0.75rem; }
+      .req-block { padding: 1rem 1.1rem; }
+      .req-block h4 { font-size: 0.92rem; }
+      .req-block p  { font-size: 0.82rem; }
+      .user-story-card { font-size: 0.82rem; padding: 0.85rem 1rem; }
+      .persona-card { padding: 1.25rem; }
+      .persona-card .persona-header { flex-direction: column; align-items: flex-start; gap: 0.5rem; }
+      .prd-meta-row { gap: 0.6rem; }
+      .prd-meta-chip { font-size: 0.72rem; padding: 0.3rem 0.75rem; }
+      .prd-breadcrumb { font-size: 0.72rem; }
+      .prd-hero-section h1 { font-size: clamp(1.6rem, 6vw, 2.4rem); }
+      .prd-section ul { margin-left: 1rem; font-size: 0.875rem; }
+      .footer { padding: 2rem 1.25rem; }
+    }
+
+    @media (max-width: 480px) {
+      .prd-company-logo { width: 110px; height: 110px; }
+      .prd-hero-section h1 { font-size: 1.5rem; }
+      .prd-meta-chip { font-size: 0.65rem; padding: 0.25rem 0.6rem; }
+      .prd-section h2 { font-size: 1.2rem; }
+    }
+  </style>
+</head>
+<body class="prd-page">
+
+  <nav class="navbar">
+    <a href="../index.html" class="nav-logo">
+      <img src="https://cdn-icons-png.flaticon.com/512/2921/2921222.png" alt="PRD Logo" class="nav-logo-img"/>
+      PRD <span>Project</span>
+    </a>
+    <div class="nav-links">
+      <a href="../index.html">← Home</a>
+      <a href="../index.html#prds">PRD Library</a>
+    </div>
+  </nav>
+
+  <div class="prd-hero-section">
+    <div class="prd-hero-left">
+      <div class="prd-breadcrumb">
+        <a href="../index.html">Home</a> &nbsp;/&nbsp;
+        <a href="../index.html#prds">PRD Library</a> &nbsp;/&nbsp;
+        Zomato
+      </div>
+      <h1>Zomato<br/><em>Group Order Split Bill</em></h1>
+      <p class="subtitle">Let multiple participants join a shared cart from their own devices, 
+        add items independently, and settle payment via UPI based split, eliminating the 
+        awkward phone passing and manual bill coordination forever.</p>
+      <div class="prd-meta-row">
+        <span class="prd-meta-chip">📅 Version 1.1</span>
+        <span class="prd-meta-chip">🏷️ Payments &amp; Social</span>
+        <span class="prd-meta-chip">📱 Android · iOS · Web</span>
+        <span class="prd-meta-chip">🔄 Status: In Review</span>
+      </div>
+    </div>
+    <div class="prd-hero-right">
+      <img
+        src="../images/zomato.png"
+        alt="Zomato Logo"
+        class="prd-company-logo"
+      />
+    </div>
+  </div>
+
+  <div class="prd-content">
+
+    <!-- 1. Document Header -->
+    <div class="prd-section">
+      <div class="prd-section-label">Section 01</div>
+      <h2>Document Header</h2>
+      <table class="prd-table">
+        <tr><th>Field</th><th>Details</th></tr>
+        <tr><td><strong>Product Name</strong></td><td>Group Order Split Bill, Zomato</td></tr>
+        <tr><td><strong>Document Version</strong></td><td>v1.1</td></tr>
+        <tr><td><strong>Author</strong></td><td>Achintya, Associate Product Manager</td></tr>
+        <tr><td><strong>Status</strong></td><td>In Review</td></tr>
+        <tr><td><strong>Last Updated</strong></td><td>1 June 2026</td></tr>
+        <tr><td><strong>Target Release</strong></td><td>Q3 2026</td></tr>
+        <tr><td><strong>Stakeholders</strong></td><td>Engineering (Backend, Payments), Design (UX/UI), Mobile (Android, iOS), Web/Frontend, Payments &amp; Wallets team, Data &amp; Analytics, Legal &amp; Compliance, Marketing &amp; Growth, QA</td></tr>
+        <tr><td><strong>Distribution List</strong></td><td>Product, Engineering, Design, Payments, Legal, Support, QA, Marketing</td></tr>
+      </table>
+    </div>
+
+    <!-- 2. Executive Summary -->
+    <div class="prd-section">
+      <div class="prd-section-label">Section 02</div>
+      <h2>Executive Summary</h2>
+      <p>Today, many Zomato users place group orders (for teams, families, gatherings, etc.) 
+        using a single account and device. That requires the person placing the order to pass 
+        their phone around so others can select items, which is time consuming, awkward, and 
+        increases friction in the ordering experience.</p>
+      <p>This PRD proposes <strong>Group Order Split Bill</strong>: a feature that lets multiple 
+        participants join a shared cart from their own devices, add items independently, and complete
+        payment via automated UPI based split settlement. The feature will 
+        support common split methods (itemized per person, equal split, and custom shares) 
+        and allow the organizer to manage the shared cart.</p>
+    </div>
+
+    <!-- 3. Problem Statement -->
+    <div class="prd-section">
+      <div class="prd-section-label">Section 03</div>
+      <h2>Problem Statement</h2>
+
+      <p><strong>The Core Problem:</strong> Zomato users who want to order food for a
+        group currently have no streamlined way to do so. The organizer must either 
+        collect orders one-by-one from each person and manually add them to a 
+        single cart, or pass their phone around so others can pick their own items. 
+        Both approaches are inefficient and friction heavy, increasing time to place an order, creating privacy concerns, causing confusion about who ordered what, and delaying final checkout.</p>
+
+      <p><strong>Who Has This Problem?</strong></p>
+      <ul style="margin-left:1.5rem; color:var(--ink-light); line-height:2.2; font-size:0.95rem; margin-bottom:1.2rem;">
+        <li><strong>Team managers and office coordinators</strong> — organize food for team lunches, meetings, and celebrations; face time consuming coordination and split confusion</li>
+        <li><strong>Party and event organizers</strong> — host gatherings for 8-50+ people; struggle with managing preferences and splitting bills fairly</li>
+        <li><strong>College and school friend groups</strong> — order together in hostels and PGs; face friction around money and unequal splits</li>
+        <li><strong>Families and shared households</strong> — order for multiple members with different tastes; no easy way to track who ordered what</li>
+        <li><strong>Casual meetups and social gatherings</strong> — small friend groups who want quick coordination and transparent billing</li>
+      </ul>
+
+      <p><strong>Evidence of the Problem:</strong></p>
+      <table class="prd-table">
+        <tr><th>Signal</th><th>Data Point</th></tr>
+        <tr><td>Play Store reviews requesting group order</td><td>4,000+ reviews explicitly mention "group order" or "bulk order" functionality</td></tr>
+        <tr><td>YoY growth in group sized orders</td><td>40% YoY increase in orders significantly larger than typical individual orders</td></tr>
+        <tr><td>Internal observation</td><td>Zomato team events rely on manual coordination, same pain users face daily</td></tr>
+        <tr><td>Competitive context</td><td>Platforms in other markets already offer group ordering, setting user expectations post UPI</td></tr>
+      </table>
+
+      <p><strong>What Happens If We Don't Solve It?</strong></p>
+      <ul style="margin-left:1.5rem; color:var(--ink-light); line-height:2.2; font-size:0.95rem;">
+        <li>Users continue facing friction in group scenarios, longer ordering times, more errors, disputes over splits</li>
+        <li>Lower conversion and lost revenue as users abandon group orders or split into multiple smaller inefficient orders</li>
+        <li>Competitive disadvantage, competitors who launch a smooth group order experience become the default for team meals and events</li>
+        <li>Increased support overhead, more tickets related to wrong orders, missing items, and payment disputes</li>
+        <li>Missed growth opportunity, no group flow means lost chance to increase AOV and drive social, collaborative engagement</li>
+      </ul>
+    </div>
+
+    <!-- 4. Goals -->
+    <div class="prd-section">
+      <div class="prd-section-label">Section 04</div>
+      <h2>Goals &amp; Non-Goals</h2>
+
+      <p><strong>Business Goals</strong></p>
+      <table class="prd-table">
+        <tr><th>Goal</th><th>Target</th></tr>
+        <tr><td>Increase AOV for group orders vs. overall platform AOV</td><td>+10-12% higher AOV via group order flow</td></tr>
+        <tr><td>Reduce negative reviews/tickets mentioning group order hassle</td><td>≥30% reduction YoY within 6 months of launch</td></tr>
+        <tr><td>Drive group order adoption in pilot cities</td><td>≥15% of all orders via Group Order flow within 3 months</td></tr>
+        <tr><td>Increase repeat group order rate</td><td>≥20% increase in users placing ≥2 group orders in 30 days over 6 months</td></tr>
+        <tr><td>Become preferred app for team meals and social ordering</td><td>Qualitative, positive sentiment in social media and reviews</td></tr>
+      </table>
+      <br/>
+
+      <p><strong>User Goals</strong></p>
+      <ul style="margin-left:1.5rem; color:var(--ink-light); line-height:2.2; font-size:0.95rem; margin-bottom:1.5rem;">
+        <li>Create or join a group order in ≤3 taps</li>
+        <li>Complete the entire ordering process in ≤5 minutes for a typical group of 4–6 people</li>
+        <li>Split the bill fairly: by item, equally, or with custom shares; with full transparency before payment</li>
+        <li>Each participant receives a clear receipt showing their items, their share, and total order summary</li>
+      </ul>
+
+      <p><strong>🚫 Non-Goals (Out of Scope for v1)</strong></p>
+      <ul style="margin-left:1.5rem; color:var(--ink-light); line-height:2; font-size:0.95rem;">
+        <li>Advanced loyalty points or tier benefits specifically for group orders</li>
+        <li>Commission or pricing model changes for large orders</li>
+        <li>Cross-restaurant group orders (single restaurant only in v1)</li>
+        <li>In-app chat or calling between participants</li>
+        <li>Advanced split logic beyond itemized, equal, and basic custom splits</li>
+        <li>Refund automation and partial refunds per user</li>
+      </ul>
+    </div>
+
+    <!-- 5. Success Metrics -->
+    <div class="prd-section">
+      <div class="prd-section-label">Section 05</div>
+      <h2>Success Metrics / KPIs</h2>
+      <table class="prd-table">
+        <tr><th>Metric</th><th>Target</th><th>Timeframe</th><th>Ownership</th></tr>
+        <tr><td>Group-order AOV vs. baseline</td><td>+10-12% YoY</td><td>6 months post-launch</td><td>Product / Data</td></tr>
+        <tr><td>% of orders via Group Order flow (pilot cities)</td><td>≥15%</td><td>3 months post-launch</td><td>Product / Growth</td></tr>
+        <tr><td>Repeat group order rate (≥2 group orders in 30 days)</td><td>+20% over baseline</td><td>6 months</td><td>Product / Data</td></tr>
+        <tr><td>Negative reviews/tickets mentioning group-order hassle</td><td>−30% YoY</td><td>6 months</td><td>CX / Product</td></tr>
+        <tr><td>Time to checkout for group orders (median)</td><td>≤5 min for 4–6 people</td><td>3 months</td><td>Engineering / Product</td></tr>
+        <tr><td>Payment success rate for split UPI flows</td><td>≥95%</td><td>1 month post-launch</td><td>Payments / Engineering</td></tr>
+        <tr><td>Support tickets per 1,000 group orders (split-related)</td><td>≤5</td><td>3 months</td><td>CX / Product</td></tr>
+      </table>
+    </div>
+
+    <!-- 6. User Personas -->
+    <div class="prd-section">
+      <div class="prd-section-label">Section 06</div>
+      <h2>User Personas</h2>
+
+      <div class="persona-card">
+        <div class="persona-header">
+          <div class="persona-avatar">👩‍💼</div>
+          <div>
+            <div class="persona-name">Riya, 34 Senior HR</div>
+            <div class="persona-role">Bengaluru · Multinational Company · Organizes food for 10-50 people</div>
+          </div>
+        </div>
+        <p><span class="persona-label">Current Workflow:</span> Creates a Google Form to collect food preferences, waits for responses, manually adds items to a single Zomato order, and tracks billing via spreadsheets.</p>
+        <p><span class="persona-label">Pain Point:</span> Time consuming coordination, risk of errors (missing items, duplicate entries), no automated split, awkwardness in chasing preferences repeatedly.</p>
+        <p><span class="persona-label">Goal:</span> Let everyone choose their own meal from their own phone. Automatically track who ordered what and simplify internal billing.</p>
+        <p><span class="persona-label">Tech Comfort:</span> High; uses UPI, Zomato, Swiggy, Google Forms, and WhatsApp fluently.</p>
+      </div>
+
+      <div class="persona-card">
+        <div class="persona-header">
+          <div class="persona-avatar">🏠</div>
+          <div>
+            <div class="persona-name">Priya, 28 Housewife</div>
+            <div class="persona-role">Mumbai · Mother of two · Orders for 4-8 family members regularly</div>
+          </div>
+        </div>
+        <p><span class="persona-label">Current Workflow:</span> Personally asks each family member what they want, manually adds all items to a single order, keeps mental notes about who ordered what.</p>
+        <p><span class="persona-label">Pain Point:</span> Time consuming "interrogation" to decide preferences. Confusion about who ordered what and how to split costs within the family.</p>
+        <p><span class="persona-label">Goal:</span> Remove the hassle of repeatedly asking everyone. Let each family member choose from their own phone with a clear view of who pays what.</p>
+        <p><span class="persona-label">Tech Comfort:</span> High; uses social media, Zomato, and UPI frequently.</p>
+      </div>
+
+      <div class="persona-card">
+        <div class="persona-header">
+          <div class="persona-avatar">🎓</div>
+          <div>
+            <div class="persona-name">Suresh, 20 College Student</div>
+            <div class="persona-role">Delhi · Hostel resident · Orders for groups of 3-10 friends</div>
+          </div>
+        </div>
+        <p><span class="persona-label">Current Workflow:</span> Asks friends one by one what they want, manually adds all items, tracks who owes what via WhatsApp or mental notes.</p>
+        <p><span class="persona-label">Pain Point:</span> Tedious preference collection, confusion over splits, awkwardness when money is involved among friends.</p>
+        <p><span class="persona-label">Goal:</span> Let each friend choose from their own phone with an easy, transparent equal or per item bill split. Reduce friction around money.</p>
+        <p><span class="persona-label">Tech Comfort:</span> Very high; uses social media, food delivery, and UPI fluently.</p>
+      </div>
+
+      <div class="persona-card">
+        <div class="persona-header">
+          <div class="persona-avatar">💻</div>
+          <div>
+            <div class="persona-name">Arjun, 29 Team Lead / Office Coordinator</div>
+            <div class="persona-role">Hyderabad · Tech Company · Coordinates team meals for 8-30 people</div>
+          </div>
+        </div>
+        <p><span class="persona-label">Current Workflow:</span> Sends a WhatsApp message asking everyone to reply, manually collects responses, adds items to a single cart, uses spreadsheets or mental notes for splits, and chases UPI payments manually.</p>
+        <p><span class="persona-label">Pain Point:</span> Repeatedly chasing responses, error prone manual entry, no automated split, delayed reimbursements, no clear receipt per person for internal accounting.</p>
+        <p><span class="persona-label">Goal:</span> Create a group order link, let teammates join and order directly, enable instant UPI based split at checkout, and get a per person receipt automatically.</p>
+        <p><span class="persona-label">Tech Comfort:</span> High; uses Zomato, UPI, WhatsApp, spreadsheets, and productivity tools fluently.</p>
+      </div>
+    </div>
+
+    <!-- 7. User Journey & User Stories -->
+    <div class="prd-section">
+      <div class="prd-section-label">Section 07</div>
+      <h2>User Journey &amp; User Stories</h2>
+
+      <p style="margin-bottom:1rem; font-weight:600; font-size:1rem;">Primary User Journey - Organizer Flow</p>
+      <div style="background:white; border-radius:var(--radius); padding:1.5rem; margin-bottom:2rem; border:1px solid rgba(26,23,20,0.08); font-size:0.9rem; color:var(--ink-light); line-height:2;">
+        Open Zomato → Click "Create Group Order" → Select restaurant &amp; delivery address → <strong>System generates unique group link instantly</strong> → Share link via WhatsApp / Email / SMS → Participants join and add their own items → Organizer reviews full cart (sees who ordered what) → Choose split method (itemized / equal / custom) → System calculates each person's share including taxes &amp; delivery fee → Trigger UPI payment requests to participants → Participants confirm payment → <strong>Order confirmed, everyone receives their own receipt</strong>
+      </div>
+
+      <p style="margin-bottom:1rem; font-weight:600; font-size:1rem;">Participant Flow</p>
+      <div style="background:white; border-radius:var(--radius); padding:1.5rem; margin-bottom:2rem; border:1px solid rgba(26,23,20,0.08); font-size:0.9rem; color:var(--ink-light); line-height:2;">
+        Receive group link (WhatsApp / SMS / Email) → Click link → Open shared cart in-app or web → Log in or continue as guest → Add own items to common cart → See who else has joined and what they ordered → Review own items and calculated share → Receive UPI payment request for share → Confirm payment → Receive receipt with own items, own share, and full order summary
+      </div>
+
+      <p style="margin-bottom:1rem; font-weight:600;">Epic 1 — Group Order Creation &amp; Link Sharing</p>
+      <div class="user-story-card"><strong>US-01 · P0</strong> — As an organizer, I want to create a group order without asking everyone individually, so that I can reduce coordination time.</div>
+      <div class="user-story-card"><strong>US-02 · P0</strong> — As an organizer, I want the group order link to be created instantly after creating the group, so that I can share it quickly.</div>
+      <div class="user-story-card"><strong>US-03 · P0</strong> — As an organizer, I want multiple options to share the link (WhatsApp, email, SMS, and others), so that I can reach my group easily.</div>
+      <div class="user-story-card"><strong>US-04 · P1</strong> — As an organizer, I want to add a custom message when sharing the link (e.g., event name, time), so that participants understand the context.</div>
+      <div class="user-story-card"><strong>US-05 · P0</strong> — As a participant, I want to join the group order by clicking the link, so that I can add my items without confusion.</div>
+
+      <p style="margin:1.5rem 0 1rem; font-weight:600;">Epic 2 — Common Cart for Group Orders</p>
+      <div class="user-story-card"><strong>US-06 · P0</strong> — As a participant, I want to add my own items to a common cart from my own device, so that I don't need to use the organizer's phone.</div>
+      <div class="user-story-card"><strong>US-07 · P1</strong> — As a participant, I want to see who has joined the group and what others have ordered (optional visibility), so that I can track the group order.</div>
+      <div class="user-story-card"><strong>US-08 · P0</strong> — As a participant, I want to edit or remove my own items before the order is finalized, so that I can correct mistakes.</div>
+      <div class="user-story-card"><strong>US-09 · P0</strong> — As an organizer, I want to view the full cart and see who ordered what, so that I can manage the order and avoid conflicts.</div>
+    </div>
+
+    <!-- 8. Functional Requirements -->
+    <div class="prd-section">
+      <div class="prd-section-label">Section 08</div>
+      <h2>Functional Requirements</h2>
+
+      <div class="req-block">
+        <div class="req-id">FR-01 &nbsp;<span class="priority-tag p0">P0</span></div>
+        <h4>Group Order Creation &amp; Link Sharing</h4>
+        <p>Users must be able to create a group order from the app or website and instantly generate a unique group order link. The organizer can share this link via WhatsApp, email, SMS, or other supported channels. The link allows participants to join the group order and access a shared cart.</p>
+      </div>
+
+      <div class="req-block">
+        <div class="req-id">FR-02 &nbsp;<span class="priority-tag p0">P0</span></div>
+        <h4>Common Cart with Real Time Synchronization</h4>
+        <p>All participants can add, edit, or remove their own items in a common cart from their own devices. The cart must be synchronized in real time across all participants' devices, showing who joined and what each person has ordered. Visibility is configurable by the organizer.</p>
+      </div>
+
+      <div class="req-block">
+        <div class="req-id">FR-03 &nbsp;<span class="priority-tag p0">P0</span></div>
+        <h4>Organizer Cart Management &amp; Finalization</h4>
+        <p>The organizer can view the full cart, see who ordered what, and make final adjustments (remove or modify items) before finalizing the order. The organizer has the authority to confirm and place the order once all participants have added their items.</p>
+      </div>
+
+      <div class="req-block">
+        <div class="req-id">FR-04 &nbsp;<span class="priority-tag p0">P0</span></div>
+        <h4>Bill Split Method Selection</h4>
+        <p>The organizer can choose how the bill is split: Itemized split (each person pays for what they ordered), Equal split (all participants split the total equally), or Custom split (organizer manually adjusts shares). The system calculates each participant's share, including taxes, delivery fee, and platform fees.</p>
+      </div>
+
+      <div class="req-block">
+        <div class="req-id">FR-05 &nbsp;<span class="priority-tag p0">P0</span></div>
+        <h4>UPI Based Split Payment Flow</h4>
+        <p>Once the split method is chosen, the system triggers UPI payment requests to each participant for their share. Participants confirm payment via their UPI app. The organizer can also pay the entire bill themselves if needed. The system tracks payment status per participant in real time.</p>
+      </div>
+
+      <div class="req-block">
+        <div class="req-id">FR-06 &nbsp;<span class="priority-tag p0">P0</span></div>
+        <h4>Receipt &amp; Order Confirmation Per Participant</h4>
+        <p>After the order is confirmed and payment is complete, each participant receives a clear receipt showing: their items, their share, and full order summary (including taxes, delivery fee, platform fees). Participants can also see the order status (preparing, dispatched, delivered) in the app.</p>
+      </div>
+
+      <div class="req-block p1-block">
+        <div class="req-id">FR-07 &nbsp;<span class="priority-tag p1">P1</span></div>
+        <h4>Group Order Expiry &amp; Link Invalidation</h4>
+        <p>The system defines conditions for group order expiry (e.g., organizer cancels, time limit exceeded, no new participants). When expired, the group link becomes invalid and all participants are notified that the group order is no longer active.</p>
+      </div>
+
+      <div class="req-block p1-block">
+        <div class="req-id">FR-08 &nbsp;<span class="priority-tag p1">P1</span></div>
+        <h4>Cancellation &amp; Modification Notifications</h4>
+        <p>If the organizer cancels or modifies the order after participants have paid, the system notifies all affected participants. The system handles refunds or adjustments based on Zomato's refund policy.</p>
+      </div>
+    </div>
+
+    <!-- 9. NFRs -->
+    <div class="prd-section">
+      <div class="prd-section-label">Section 09</div>
+      <h2>Non-Functional Requirements</h2>
+      <table class="prd-table">
+        <tr><th>NFR ID</th><th>Category</th><th>Requirement</th></tr>
+        <tr><td>NFR-01</td><td>Performance</td><td>Cart updates (add, edit, remove) must be visible to all participants within ≤2 seconds under normal network conditions</td></tr>
+        <tr><td>NFR-02</td><td>Payments</td><td>UPI split payment flow must achieve a payment success rate ≥95%; failed payments handled with retry options and clear error messages</td></tr>
+        <tr><td>NFR-03</td><td>Security</td><td>Group order links must be unique, cryptographically secure, tamper-proof, and validated on each use to ensure the group is still active</td></tr>
+        <tr><td>NFR-04</td><td>Privacy</td><td>Participant information (name, contact, payment details) stored securely with encryption; not exposed unnecessarily to other participants unless visibility is enabled</td></tr>
+        <tr><td>NFR-05</td><td>Reliability</td><td>System must handle network failures gracefully, show clear error messages, avoid data loss during partial failures, and not lose cart items due to transient errors</td></tr>
+        <tr><td>NFR-06</td><td>Scalability</td><td>Must support groups of at least 50 participants; backend must scale for high concurrent usage during peak lunch/dinner hours without performance degradation</td></tr>
+        <tr><td>NFR-07</td><td>Availability</td><td>Group order feature must maintain ≥99.5% uptime during operational hours</td></tr>
+        <tr><td>NFR-08</td><td>Compatibility</td><td>Feature must work on Android (current major versions), iOS (current major versions), and Web (Chrome, Safari, Firefox) with consistent UX across platforms</td></tr>
+        <tr><td>NFR-09</td><td>Observability</td><td>System must log key events (group creation, link share, item add, payment success/failure) and provide monitoring dashboards for payment success rate, cart sync latency, and error rates</td></tr>
+        <tr><td>NFR-10</td><td>Performance</td><td>App and web pages must load within ≤2 seconds on average devices; respond to user actions (add item, share link) within ≤500ms</td></tr>
+      </table>
+    </div>
+
+    <!-- 10. Design & UX Requirements -->
+    <div class="prd-section">
+      <div class="prd-section-label">Section 10</div>
+      <h2>Design &amp; UX Requirements</h2>
+
+      <p><strong>Entry Points - Users must discover the feature from multiple natural points:</strong></p>
+      <table class="prd-table">
+        <tr><th>Entry Point</th><th>Description</th></tr>
+        <tr><td>Home Screen</td><td>Dedicated "Create Group Order" button or card visible when user has selected a restaurant</td></tr>
+        <tr><td>Restaurant / Menu Page</td><td>"Start Group Order" button near "Add to Cart" area — visible only for restaurants that support group orders</td></tr>
+        <tr><td>Cart Screen</td><td>"Convert to Group Order" option after items are added, allowing conversion without starting from scratch</td></tr>
+        <tr><td>Order History</td><td>"Recreate this group order" button for past group orders — supports repeat team lunches and weekly orders</td></tr>
+        <tr><td>Participant Entry</td><td>Group order link (shared via WhatsApp, SMS, email) opens the shared cart in-app or on web</td></tr>
+      </table>
+
+      <p style="margin-top:1.5rem;"><strong>Tone &amp; Messaging Guidelines:</strong></p>
+      <ul style="margin-left:1.5rem; color:var(--ink-light); line-height:2.2; font-size:0.95rem;">
+        <li>Simple and clear, avoid jargon like "distributed cart" or "multi-party settlement"</li>
+        <li>Friendly and social, emphasize collaboration, not transaction</li>
+        <li>Transparent, clearly communicate how the bill is split and what each person pays</li>
+        <li>Use conversational copy: "Everyone orders their own meal.", "No more passing the phone.", "Bill is split automatically."</li>
+      </ul>
+    </div>
+
+    <!-- 11. Assumptions & Constraints -->
+    <div class="prd-section">
+      <div class="prd-section-label">Section 11</div>
+      <h2>Assumptions &amp; Constraints</h2>
+      <p><strong>Assumptions:</strong></p>
+      <ul style="margin-left:1.5rem; color:var(--ink-light); line-height:2.2; font-size:0.95rem; margin-bottom:1.5rem;">
+        <li>Restaurants participating in the pilot support reasonably large orders (10+ items) without operational issues; non-supporting restaurants can be excluded</li>
+        <li>Most participants in group orders have a UPI enabled bank account and UPI app installed</li>
+        <li>For participants without UPI, the organizer can pay the entire bill as a v1 fallback</li>
+      </ul>
+      <p><strong>Constraints:</strong></p>
+      <ul style="margin-left:1.5rem; color:var(--ink-light); line-height:2.2; font-size:0.95rem;">
+        <li>Single restaurant per group order in v1, cross restaurant group orders not supported due to logistics and billing complexity</li>
+        <li>UPI only split payments in v1; cards, wallets, and Cash on Delivery not supported for split flows initially</li>
+      </ul>
+    </div>
+
+    <!-- 12. Release Plan -->
+    <div class="prd-section">
+      <div class="prd-section-label">Section 12</div>
+      <h2>Release Plan &amp; Milestones</h2>
+      <table class="prd-table">
+        <tr><th>Phase</th><th>Target</th><th>Scope</th><th>Markets &amp; Rollout</th></tr>
+        <tr>
+          <td><strong>Phase 1 - Internal Pilot + Limited Beta</strong></td>
+          <td>August 2026</td>
+          <td>FR-01 to FR-06 · Itemized + equal split only · Basic UPI payment</td>
+          <td>India only · Bengaluru, Mumbai, Delhi NCR, Hyderabad, Pune · Android first (5% → 20% → 100% over 6 weeks) · iOS 2 weeks later · Web: internal testing only</td>
+        </tr>
+        <tr>
+          <td><strong>Phase 2 - Expanded Beta + Web</strong></td>
+          <td>November 2026</td>
+          <td>FR-01 to FR-08 · Custom split enhanced · Visibility toggle for others' orders</td>
+          <td>India · Tier-1 + Chennai, Ahmedabad, Kolkata, Jaipur, Kochi · Android + iOS (10% → 30% → 100% over 8 weeks) · Web: 4 weeks after mobile</td>
+        </tr>
+        <tr>
+          <td><strong>Phase 3 - Full India Launch + Optimization</strong></td>
+          <td>February 2027</td>
+          <td>All FRs · Recreate past group orders · Payment reminders · Organizer analytics</td>
+          <td>India wide (Tier-1, Tier-2, select Tier-3) · Android + iOS + Web (20% → 60% → 100% over 10 weeks)</td>
+        </tr>
+      </table>
+    </div>
+
+    <!-- 13. Open Questions -->
+    <div class="prd-section">
+      <div class="prd-section-label">Section 13</div>
+      <h2>Open Questions</h2>
+      <table class="prd-table">
+        <tr><th>#</th><th>Question</th><th>Owner</th><th>Due</th></tr>
+        <tr><td>OQ-01</td><td>Should v1 strictly support only single restaurant group orders, or is there a minimum viable path to support 2–3 restaurants? What are the logistics implications?</td><td>PM + Engineering</td><td>July 1, 2026</td></tr>
+        <tr><td>OQ-02</td><td>Should participants be able to hide their items from others in the group? What is the default visibility setting?</td><td>Design + PM</td><td>July 5, 2026</td></tr>
+        <tr><td>OQ-03</td><td>Should the organizer be able to remove or modify a participant's items without confirmation? What is the policy if a participant objects after the fact?</td><td>PM + Legal</td><td>July 8, 2026</td></tr>
+        <tr><td>OQ-04</td><td>What should be the default expiry time for a group order link (e.g., 30 minutes, 1 hour, 24 hours)? Should organizers be able to extend it?</td><td>PM + Engineering</td><td>July 10, 2026</td></tr>
+      </table>
+    </div>
+
+
+  </div><!-- /prd-content -->
+
+  <footer class="footer">
+    <div class="footer-inner">
+      <div class="footer-brand">PRD Project</div>
+      <p>Built as a pre-MBA portfolio project to master Product Management fundamentals through hands-on PRD writing.</p>
+      <a href="../index.html" style="color:var(--yellow); font-weight:600; text-decoration:none;">← Back to Home</a>
+    </div>
+  </footer>
+
+</body>
+</html>
