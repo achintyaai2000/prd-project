@@ -793,7 +793,7 @@ em { font-style: italic; color: var(--accent); }
 }
 .company-logo.google { background: #4285F4; color: white; }
 .company-logo.amazon { background: #FF9900; color: white; font-style: italic; font-family: Georgia, serif; }
-.company-logo.uber { background: #000; color: white; }
+.company-logo.meta { background: darkmagenta; color: white; }
 .company-logo.zomato { background: red; color: white; }
 
 .company-header h3 {
