@@ -1,0 +1,516 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>YouTube — Video Chapters | PRD Project</title>
+  <link rel="stylesheet" href="../style.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,600;0,9..144,800;1,9..144,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+  <style>
+    /* ── Navbar: logo left, links right ── */
+    .prd-page .navbar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .prd-page .navbar .nav-center { display: none; }
+
+    /* ── Hero: text left, logo right ── */
+    .prd-hero-section {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 3rem;
+    }
+    .prd-hero-left { flex: 1; position: relative; z-index: 1; }
+    .prd-hero-right {
+      flex-shrink: 0;
+      position: relative;
+      z-index: 1;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .prd-company-logo {
+      width: 260px;
+      height: 260px;
+      object-fit: contain;
+      opacity: 0.92;
+      filter: drop-shadow(0 8px 32px rgba(0,0,0,0.4));
+      animation: floatLogo 3s ease-in-out infinite;
+    }
+    @keyframes floatLogo {
+      0%, 100% { transform: translateY(0px); }
+      50%       { transform: translateY(-16px); }
+    }
+
+    .prd-table-wrapper {
+      width: 100%;
+      overflow-x: auto;
+      -webkit-overflow-scrolling: touch;
+    }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 900px) {
+      .prd-page .navbar { padding: 0.9rem 1.25rem; }
+      .prd-page .navbar .nav-links { display: flex; gap: 1rem; }
+      .prd-page .navbar .nav-links a { font-size: 0.8rem; }
+      .prd-hero-section {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 2rem;
+        padding: 3rem 1.5rem 2.5rem;
+      }
+      .prd-hero-right { width: 100%; justify-content: center; }
+      .prd-company-logo { width: 160px; height: 160px; }
+      .prd-content { padding: 2rem 1.25rem; }
+      .prd-section h2 { font-size: 1.4rem; }
+      .prd-table {
+        display: block;
+        overflow-x: auto;
+        -webkit-overflow-scrolling: touch;
+        white-space: nowrap;
+        font-size: 0.8rem;
+      }
+      .prd-table th, .prd-table td { padding: 0.65rem 0.75rem; }
+      .req-block { padding: 1rem 1.1rem; }
+      .req-block h4 { font-size: 0.92rem; }
+      .req-block p  { font-size: 0.82rem; }
+      .user-story-card { font-size: 0.82rem; padding: 0.85rem 1rem; }
+      .persona-card { padding: 1.25rem; }
+      .persona-card .persona-header { flex-direction: column; align-items: flex-start; gap: 0.5rem; }
+      .prd-meta-row { gap: 0.6rem; }
+      .prd-meta-chip { font-size: 0.72rem; padding: 0.3rem 0.75rem; }
+      .prd-breadcrumb { font-size: 0.72rem; }
+      .prd-hero-section h1 { font-size: clamp(1.6rem, 6vw, 2.4rem); }
+      .prd-section ul { margin-left: 1rem; font-size: 0.875rem; }
+      .footer { padding: 2rem 1.25rem; }
+    }
+
+    @media (max-width: 480px) {
+      .prd-company-logo { width: 110px; height: 110px; }
+      .prd-hero-section h1 { font-size: 1.5rem; }
+      .prd-meta-chip { font-size: 0.65rem; padding: 0.25rem 0.6rem; }
+      .prd-section h2 { font-size: 1.2rem; }
+    }
+  </style>
+</head>
+<body class="prd-page">
+
+  <nav class="navbar">
+    <a href="../index.html" class="nav-logo">
+      <img src="https://cdn-icons-png.flaticon.com/512/2921/2921222.png" alt="PRD Logo" class="nav-logo-img"/>
+      PRD <span>Project</span>
+    </a>
+    <div class="nav-links">
+      <a href="../index.html">← Home</a>
+      <a href="../index.html#prds">PRD Library</a>
+    </div>
+  </nav>
+
+  <div class="prd-hero-section">
+    <div class="prd-hero-left">
+      <div class="prd-breadcrumb">
+        <a href="../index.html">Home</a> &nbsp;/&nbsp;
+        <a href="../index.html#prds">PRD Library</a> &nbsp;/&nbsp;
+        YouTube
+      </div>
+      <h1>YouTube<br/><em>Video Chapters</em></h1>
+      <p class="subtitle">Let creators divide long videos into named, timestamped sections and let viewers jump directly to what they need, eliminating the frustration of scrubbing through hours of content.</p>
+      <div class="prd-meta-row">
+        <span class="prd-meta-chip">📅 Version 1.1</span>
+        <span class="prd-meta-chip">🏷️ Creator &amp; Viewer Experience</span>
+        <span class="prd-meta-chip">📱 Android · iOS · Web · Desktop</span>
+        <span class="prd-meta-chip">🔄 Status: In Review</span>
+      </div>
+    </div>
+    <div class="prd-hero-right">
+      <img
+        src="../images/youtube.png"
+        alt="YouTube Logo"
+        class="prd-company-logo"
+      />
+    </div>
+  </div>
+
+  <div class="prd-content">
+
+    <!-- 1. Document Header -->
+    <div class="prd-section">
+      <div class="prd-section-label">Section 01</div>
+      <h2>Document Header</h2>
+      <table class="prd-table">
+        <tr><th>Field</th><th>Details</th></tr>
+        <tr><td><strong>Product Name</strong></td><td>Video Chapters, YouTube</td></tr>
+        <tr><td><strong>Document Version</strong></td><td>v1.1</td></tr>
+        <tr><td><strong>Author</strong></td><td>Achintya, Associate Product Manager</td></tr>
+        <tr><td><strong>Status</strong></td><td>In Review</td></tr>
+        <tr><td><strong>Last Updated</strong></td><td>9 June 2026</td></tr>
+        <tr><td><strong>Target Release</strong></td><td>Q4 2026</td></tr>
+        <tr><td><strong>Stakeholders</strong></td><td>Engineering (Backend, Mobile, Web, Desktop), Design (UX/UI), Mobile (Android, iOS), Web/Desktop, Data &amp; Analytics, Creator Experience, Trust &amp; Safety, Marketing &amp; Growth, QA &amp; SRE, Accessibility Team</td></tr>
+      </table>
+    </div>
+
+    <!-- 2. Executive Summary -->
+    <div class="prd-section">
+      <div class="prd-section-label">Section 02</div>
+      <h2>Executive Summary</h2>
+      <p>Average video lengths on YouTube are increasing significantly, especially for tutorials, podcasts, interviews, and documentaries. Viewers often want specific information rather than watching an entire long video. Currently, scrubbing through long videos is time consuming and frustrating, and viewers frequently rely on comments or descriptions to find important moments. Creators have no structured way to highlight key sections of their content.</p>
+      <p>This PRD proposes <strong>Video Chapters</strong> for YouTube, a feature that allows creators to divide their videos into named sections with timestamps, and lets viewers jump directly to those sections via an interactive chapter navigator in the video player.</p>
+      <p>With Video Chapters, creators can mark key sections (e.g., "Introduction," "Binary Trees," "Battery Life Test"), viewers see a chapter list and can click any chapter to jump to that timestamp, and chapters appear in the progress bar, video description, and potentially in YouTube's search results and recommendations. This feature is designed to improve navigation, reduce abandonment, increase watch completion for long videos, and help creators showcase the full value of their content.</p>
+    </div>
+
+    <!-- 3. Problem Statement -->
+    <div class="prd-section">
+      <div class="prd-section-label">Section 03</div>
+      <h2>Problem Statement</h2>
+
+      <p><strong>The Core Problem:</strong> As video lengths increase, especially for tutorials, podcasts, interviews, and documentaries; viewers face significant friction when trying to find specific information. Users must manually scrub through long videos to find relevant sections, there is no structured navigation to key moments, and viewers rely on unreliable comments or descriptions to locate important content. Creators cannot highlight or organize key sections, leaving valuable content undiscovered.</p>
+
+      <p><strong>Who Has This Problem?</strong></p>
+      <ul style="margin-left:1.5rem; color:var(--ink-light); line-height:2.2; font-size:0.95rem; margin-bottom:1.2rem;">
+        <li><strong>Learners and students</strong> — watch 1–3 hour educational lectures and need to revisit specific topics (e.g., "Binary Trees," "Calculus Chapter 3"); don't remember where a topic starts and must scrub the entire lecture</li>
+        <li><strong>Professionals learning new skills</strong> — watch skill based tutorials (e.g., "Learn Python," "Excel for Business") and need specific sections like "Loops" or "Pivot Tables" without watching the full video</li>
+        <li><strong>Information seekers</strong> — watch product reviews and want specific sections like "Battery Life" or "Camera Test" without sitting through the entire review</li>
+        <li><strong>Entertainment viewers</strong> — listen to 2–4 hour podcasts or watch sports interviews and want to skip to specific topics or highlights without sitting through unrelated content</li>
+        <li><strong>Creators</strong> — educational creators, tech reviewers, podcast hosts, and documentary filmmakers with no structured way to highlight key sections, leading to undiscovered valuable content and lower completion rates</li>
+      </ul>
+
+      <p><strong>Evidence of the Problem:</strong></p>
+      <table class="prd-table">
+        <tr><th>Signal</th><th>Data Point</th></tr>
+        <tr><td>Increasing video lengths</td><td>Average lengths rising significantly for tutorials, podcasts, interviews, and documentaries; analytics show higher scrubbing behavior and abandonment for long videos</td></tr>
+        <tr><td>User feedback</td><td>Users frequently request "timestamp navigation," "section markers," and "chapters for long videos"; support teams observe repeated questions about finding specific parts</td></tr>
+        <tr><td>Creator feedback</td><td>Creators report valuable sections remaining undiscovered, lower viewer satisfaction, and difficulty promoting specific content sections</td></tr>
+        <tr><td>Competitive context</td><td>Platforms like Spotify, Coursera, and Udemy offer chapter/chapter like navigation for long content; YouTube lacks a native structured chapter system, creating a competitive gap</td></tr>
+      </table>
+
+      <p><strong>What Happens If We Don't Solve It?</strong></p>
+      <ul style="margin-left:1.5rem; color:var(--ink-light); line-height:2.2; font-size:0.95rem;">
+        <li>Viewers face increased frustration navigating long videos, spend more time manually searching for content, and are more likely to abandon videos entirely</li>
+        <li>Creators continue to see valuable content sections remain undiscovered, reduced watch completion rates, and difficulty promoting podcasts, courses, and educational videos</li>
+        <li>YouTube faces poorer user experience compared to competitors, reduced engagement on long-form content, and risk of losing users to platforms with better navigation for long content</li>
+      </ul>
+    </div>
+
+    <!-- 4. Goals -->
+    <div class="prd-section">
+      <div class="prd-section-label">Section 04</div>
+      <h2>Goals &amp; Non-Goals</h2>
+
+      <p><strong>Business Goals</strong></p>
+      <table class="prd-table">
+        <tr><th>Goal</th><th>Target</th></tr>
+        <tr><td>Increase average watch time for videos longer than 20 minutes</td><td>+10–15% within 6 months of launch</td></tr>
+        <tr><td>Improve completion rate for videos longer than 20 minutes</td><td>≥12% increase within 6 months</td></tr>
+        <tr><td>Strengthen YouTube's position for educational and podcast content</td><td>Qualitative — positive sentiment, increased consumption of educational content, competitive differentiation</td></tr>
+      </table>
+      <br/>
+
+      <p><strong>User Goals</strong></p>
+      <ul style="margin-left:1.5rem; color:var(--ink-light); line-height:2.2; font-size:0.95rem; margin-bottom:1.5rem;">
+        <li>See a list of chapters and click any chapter to jump to that timestamp in ≤2 taps/clicks</li>
+        <li>See chapter markers in the progress bar for quick jumps without manual scrubbing</li>
+        <li>Discover key content sections easily via chapter titles in the video player, search results, and recommendations</li>
+      </ul>
+
+      <p><strong>🚫 Non-Goals (Out of Scope for v1)</strong></p>
+      <ul style="margin-left:1.5rem; color:var(--ink-light); line-height:2; font-size:0.95rem;">
+        <li>Auto generated chapters — chapters must be creator defined, not AI generated in v1</li>
+        <li>Chapters in YouTube Shorts — Shorts will not support chapters in v1</li>
+        <li>Interactive chapter previews — hover thumbnails when hovering a chapter marker are out of scope</li>
+        <li>Chapter based recommendations — recommending individual chapters (not just videos) is out of scope</li>
+        <li>Custom chapter styling — creators cannot customize chapter colors or fonts in v1</li>
+      </ul>
+    </div>
+
+    <!-- 5. Success Metrics -->
+    <div class="prd-section">
+      <div class="prd-section-label">Section 05</div>
+      <h2>Success Metrics / KPIs</h2>
+      <table class="prd-table">
+        <tr><th>Success Metric</th><th>Target</th><th>Timeframe</th><th>Ownership</th></tr>
+        <tr><td>Avg. watch time for videos &gt;20 min</td><td>+10–15%</td><td>6 months</td><td>Product / Data</td></tr>
+        <tr><td>Completion rate for videos &gt;20 min</td><td>+12%</td><td>6 months</td><td>Product / Data</td></tr>
+        <tr><td>Video abandonment rate for long videos</td><td>−10%</td><td>6 months</td><td>Product / Data</td></tr>
+        <tr><td>User satisfaction score (long videos)</td><td>Increase</td><td>6 months</td><td>CX / Product</td></tr>
+        <tr><td>% of long videos with chapters enabled</td><td>≥30%</td><td>6 months</td><td>Creator Exp / Product</td></tr>
+      </table>
+      <br/>
+      <table class="prd-table">
+        <tr><th>KPI</th><th>Target</th><th>Timeframe</th><th>Measurement Method</th><th>Ownership</th></tr>
+        <tr><td>Clicks on chapters (per long video)</td><td>Grow steadily</td><td>6 months</td><td>Event tracking</td><td>Product / Data</td></tr>
+        <tr><td>Time saved per chapter navigation</td><td>Measure baseline</td><td>6 months</td><td>Performance monitoring</td><td>Engineering</td></tr>
+        <tr><td>Chapter adoption rate among creators</td><td>≥30% of long videos</td><td>6 months</td><td>Event tracking</td><td>Creator Exp / Product</td></tr>
+        <tr><td>Crash rate related to chapter feature</td><td>≤0.5%</td><td>1 month</td><td>Crash analytics</td><td>Engineering / QA</td></tr>
+        <tr><td>Support tickets per 1,000 videos (chapter-related)</td><td>≤5</td><td>3 months</td><td>Support ticket tagging</td><td>CX / Product</td></tr>
+      </table>
+    </div>
+
+    <!-- 6. User Personas -->
+    <div class="prd-section">
+      <div class="prd-section-label">Section 06</div>
+      <h2>User Personas</h2>
+
+      <div class="persona-card">
+        <div class="persona-header">
+          <div class="persona-avatar">🎓</div>
+          <div>
+            <div class="persona-name">Rahul, 21 — Engineering Student</div>
+            <div class="persona-role">Pune · Watches 2 hour Data Structures &amp; Algorithms lectures regularly</div>
+          </div>
+        </div>
+        <p><span class="persona-label">Context:</span> Watches long educational lectures and needs to revisit specific topics like "Binary Trees" or "Dynamic Programming" frequently during exam preparation.</p>
+        <p><span class="persona-label">Pain Point:</span> Doesn't remember where a specific topic starts. Must scrub through the entire 2 hour lecture to find it losing time and risking skipping important content.</p>
+        <p><span class="persona-label">Goal:</span> Jump directly to the "Binary Trees" section in one click. Save time and improve learning efficiency without watching content he's already seen.</p>
+        <p><span class="persona-label">Tech Comfort:</span> High — uses YouTube, coding tools, and online learning platforms fluently.</p>
+      </div>
+
+      <div class="persona-card">
+        <div class="persona-header">
+          <div class="persona-avatar">💼</div>
+          <div>
+            <div class="persona-name">Sarah, 29 — Working Professional</div>
+            <div class="persona-role">Mumbai · Marketing Professional · Watches 45 minute product reviews before purchasing</div>
+          </div>
+        </div>
+        <p><span class="persona-label">Context:</span> Watches detailed product reviews (e.g., laptops, phones) before making purchase decisions. Only interested in specific sections like "Battery Life," "Performance," or "Camera Test."</p>
+        <p><span class="persona-label">Pain Point:</span> Must watch the entire review to find the one section she cares about. Time consuming and frustrating when making time sensitive purchase decisions.</p>
+        <p><span class="persona-label">Goal:</span> Navigate directly to relevant sections without watching the full video. Save time and make faster, better informed purchase decisions.</p>
+        <p><span class="persona-label">Tech Comfort:</span> High — uses YouTube, shopping apps, and productivity tools frequently.</p>
+      </div>
+
+      <div class="persona-card">
+        <div class="persona-header">
+          <div class="persona-avatar">🎙️</div>
+          <div>
+            <div class="persona-name">Mike, 34 — Podcast Listener</div>
+            <div class="persona-role">Delhi · Software Developer · Listens to 3 hour podcasts during commute and work</div>
+          </div>
+        </div>
+        <p><span class="persona-label">Context:</span> Regularly listens to long form tech and business podcasts on YouTube. Has specific topics of interest within each episode and doesn't want to consume unrelated content.</p>
+        <p><span class="persona-label">Pain Point:</span> Hard to find specific topics manually. Doesn't want to sit through unrelated conversations to reach the segment he cares about.</p>
+        <p><span class="persona-label">Goal:</span> Select the topic of interest and jump straight to it. Improve podcast listening efficiency and get more value from limited time.</p>
+        <p><span class="persona-label">Tech Comfort:</span> Very high — uses YouTube, podcasts, and tech tools fluently.</p>
+      </div>
+
+      <div class="persona-card">
+        <div class="persona-header">
+          <div class="persona-avatar">📹</div>
+          <div>
+            <div class="persona-name">Priya, 28 — Educational Creator</div>
+            <div class="persona-role">Bengaluru · Produces 1–2 hour tutorials on coding and mathematics</div>
+          </div>
+        </div>
+        <p><span class="persona-label">Context:</span> Creates long form educational content with multiple distinct sections. Each video covers several topics that students need to navigate independently.</p>
+        <p><span class="persona-label">Pain Point:</span> No structured way to highlight key sections. Valuable content remains undiscovered, viewer satisfaction is lower than it should be, and completion rates suffer.</p>
+        <p><span class="persona-label">Goal:</span> Mark key sections with timestamps and titles so viewers can navigate directly. Improve viewer satisfaction, completion rates, and overall content discoverability.</p>
+        <p><span class="persona-label">Tech Comfort:</span> High — uses YouTube Studio, editing tools, and analytics fluently.</p>
+      </div>
+    </div>
+
+    <!-- 7. User Journey & User Stories -->
+    <div class="prd-section">
+      <div class="prd-section-label">Section 07</div>
+      <h2>User Journey &amp; User Stories</h2>
+
+      <p style="margin-bottom:1rem; font-weight:600; font-size:1rem;">Primary User Journey — Creator Flow</p>
+      <div style="background:white; border-radius:var(--radius); padding:1.5rem; margin-bottom:2rem; border:1px solid rgba(26,23,20,0.08); font-size:0.9rem; color:var(--ink-light); line-height:2;">
+        Upload video to YouTube → Open YouTube Studio → Select the video → Go to Video Details → Click <strong>"Add Chapters"</strong> → Enter timestamps (e.g., 0:00, 5:30, 12:45) and chapter titles (e.g., "Introduction," "Binary Trees," "Practice Problems") → See preview of how chapters will appear to viewers → Save and publish → <strong>Chapters now visible to all viewers instantly</strong>
+      </div>
+
+      <p style="margin-bottom:1rem; font-weight:600; font-size:1rem;">Viewer Journey</p>
+      <div style="background:white; border-radius:var(--radius); padding:1.5rem; margin-bottom:2rem; border:1px solid rgba(26,23,20,0.08); font-size:0.9rem; color:var(--ink-light); line-height:2;">
+        Open long video on YouTube (mobile, web, or desktop) → See <strong>chapter markers in the progress bar</strong> → See chapter list below the video or in the navigator panel → Click any chapter title → <strong>Video jumps to that timestamp instantly</strong> → Navigate between chapters freely as needed throughout viewing
+      </div>
+
+      <p style="margin-bottom:1rem; font-weight:600;">Epic 1 — Creator Chapter Management</p>
+      <div class="user-story-card"><strong>US-01 · P0</strong> — As a creator, I want to add chapters with timestamps and titles to my video, so that viewers can navigate easily.</div>
+      <div class="user-story-card"><strong>US-02 · P0</strong> — As a creator, I want the chapter editor to be simple and intuitive, so that I can add chapters quickly without technical complexity.</div>
+      <div class="user-story-card"><strong>US-03 · P0</strong> — As a creator, I want to see a preview of how chapters will appear to viewers, so that I can verify accuracy before publishing.</div>
+      <div class="user-story-card"><strong>US-04 · P0</strong> — As a creator, I want to edit or remove chapters after publishing, so that I can correct mistakes or update content.</div>
+      <div class="user-story-card"><strong>US-05 · P1</strong> — As a creator, I want chapter guidance (e.g., best practices, minimum requirements), so that I create effective chapters that help viewers.</div>
+
+      <p style="margin:1.5rem 0 1rem; font-weight:600;">Epic 2 — Viewer Chapter Navigation</p>
+      <div class="user-story-card"><strong>US-06 · P0</strong> — As a viewer, I want to see chapter markers in the progress bar, so that I can quickly identify and jump to sections.</div>
+      <div class="user-story-card"><strong>US-07 · P0</strong> — As a viewer, I want to see a list of chapter titles, so that I know what sections are available before deciding where to jump.</div>
+      <div class="user-story-card"><strong>US-08 · P0</strong> — As a viewer, I want to click a chapter to jump to that timestamp, so that I can navigate quickly without manual scrubbing.</div>
+      <div class="user-story-card"><strong>US-09 · P0</strong> — As a viewer, I want chapters to work on mobile, web, and desktop, so that I can use them consistently across all my devices.</div>
+      <div class="user-story-card"><strong>US-10 · P0</strong> — As a viewer, I want chapter titles to be clear and descriptive, so that I understand what each section contains before clicking.</div>
+    </div>
+
+    <!-- 8. Functional Requirements -->
+    <div class="prd-section">
+      <div class="prd-section-label">Section 08</div>
+      <h2>Functional Requirements</h2>
+
+      <div class="req-block">
+        <div class="req-id">FR-01 &nbsp;<span class="priority-tag p0">P0</span></div>
+        <h4>Creator Chapter Editor in YouTube Studio</h4>
+        <p>In YouTube Studio, creators must be able to add chapters with timestamps (e.g., 0:00, 5:30) and chapter titles (e.g., "Introduction," "Binary Trees"). The editor must be simple, intuitive, and show a live preview of how chapters will appear to viewers before publishing.</p>
+      </div>
+
+      <div class="req-block">
+        <div class="req-id">FR-02 &nbsp;<span class="priority-tag p0">P0</span></div>
+        <h4>Chapter Validation</h4>
+        <p>The system must validate that timestamps are in ascending order, timestamps are within the video duration, and chapter titles are not empty. Invalid chapters must show clear, specific error messages guiding the creator to fix the issue.</p>
+      </div>
+
+      <div class="req-block">
+        <div class="req-id">FR-03 &nbsp;<span class="priority-tag p0">P0</span></div>
+        <h4>Chapter Markers in Progress Bar</h4>
+        <p>In the video player, chapter markers must appear as visible indicators in the progress bar. Clicking or tapping a marker jumps the video to that chapter's exact timestamp immediately.</p>
+      </div>
+
+      <div class="req-block">
+        <div class="req-id">FR-04 &nbsp;<span class="priority-tag p0">P0</span></div>
+        <h4>Chapter List Navigator</h4>
+        <p>Viewers must see a list of all chapter titles (e.g., below the video or in a dedicated navigator panel). Clicking or tapping any chapter title jumps the video to that timestamp. The list must be visible and accessible without additional navigation steps.</p>
+      </div>
+
+      <div class="req-block">
+        <div class="req-id">FR-05 &nbsp;<span class="priority-tag p0">P0</span></div>
+        <h4>Cross Platform Chapter Support</h4>
+        <p>Chapters must work consistently on Mobile (Android and iOS), Web, and Desktop app. The UX must be consistent across all platforms with no critical functionality missing on any supported platform.</p>
+      </div>
+
+      <div class="req-block">
+        <div class="req-id">FR-06 &nbsp;<span class="priority-tag p0">P0</span></div>
+        <h4>Chapters in Video Description</h4>
+        <p>Chapters must be auto generated in the video description, showing timestamps and chapter titles. This allows viewers to see and access chapters outside the player, in search results, shared links, and the description panel.</p>
+      </div>
+
+      <div class="req-block">
+        <div class="req-id">FR-07 &nbsp;<span class="priority-tag p0">P0</span></div>
+        <h4>Edit / Remove Chapters After Publishing</h4>
+        <p>Creators must be able to edit chapter titles, update timestamps, or remove chapters entirely after publishing. All changes must be reflected immediately for viewers without requiring a video re-upload.</p>
+      </div>
+
+      <div class="req-block">
+        <div class="req-id">FR-08 &nbsp;<span class="priority-tag p0">P0</span></div>
+        <h4>Chapter Click Event Tracking</h4>
+        <p>The system must track which chapters are clicked and how often chapters are used per video. This data must feed into creator analytics dashboards and platform level optimization to improve the chapter experience over time.</p>
+      </div>
+    </div>
+
+    <!-- 9. NFRs -->
+    <div class="prd-section">
+      <div class="prd-section-label">Section 09</div>
+      <h2>Non-Functional Requirements</h2>
+      <table class="prd-table">
+        <tr><th>NFR ID</th><th>Category</th><th>Requirement</th></tr>
+        <tr><td>NFR-01</td><td>Performance</td><td>When a viewer clicks a chapter, the video must jump to that timestamp within ≤1 second on average devices and networks</td></tr>
+        <tr><td>NFR-02</td><td>Consistency</td><td>Chapters must behave consistently across Mobile (Android, iOS), Web, and Desktop app; no critical functionality missing on any platform</td></tr>
+        <tr><td>NFR-03</td><td>Accessibility</td><td>Chapters must be accessible via keyboard navigation, compatible with screen readers, and clear for users with visual or motor disabilities; must comply with WCAG 2.1 AA</td></tr>
+        <tr><td>NFR-04</td><td>Reliability</td><td>System must handle network failures gracefully, show clear error messages if chapters fail to load, and avoid crashes when editing or viewing chapters</td></tr>
+        <tr><td>NFR-05</td><td>Scalability</td><td>System must support high concurrent usage of chapters during peak hours; backend must scale without performance degradation</td></tr>
+        <tr><td>NFR-06</td><td>Availability</td><td>Chapter feature must maintain ≥99.5% uptime during operational hours; critical failures detected and mitigated quickly</td></tr>
+        <tr><td>NFR-07</td><td>Observability</td><td>System must log key events (chapter added, clicked, edited) and provide monitoring dashboards for chapter click rate, error rates, and navigation latency</td></tr>
+      </table>
+    </div>
+
+    <!-- 10. Design & UX Requirements -->
+    <div class="prd-section">
+      <div class="prd-section-label">Section 10</div>
+      <h2>Design &amp; UX Requirements</h2>
+
+      <p><strong>Entry Points:</strong></p>
+      <table class="prd-table">
+        <tr><th>User Type</th><th>Entry Point</th><th>Description</th></tr>
+        <tr><td>Creator</td><td>YouTube Studio → Video Details → Chapter Editor</td><td>Clear "Add Chapters" button in the video details section of YouTube Studio</td></tr>
+        <tr><td>Viewer</td><td>Video Player, Progress Bar</td><td>Chapter markers visible as indicators in the progress bar; clicking jumps to that chapter</td></tr>
+        <tr><td>Viewer</td><td>Video Player, Chapter List</td><td>Chapter list shown below the video or in a dedicated navigator panel for full chapter browsing</td></tr>
+        <tr><td>Viewer</td><td>Video Description</td><td>Auto-generated chapter timestamps and titles in the description, accessible even before playing the video</td></tr>
+      </table>
+
+      <p style="margin-top:1.5rem;"><strong>Tone &amp; Messaging Guidelines:</strong></p>
+      <ul style="margin-left:1.5rem; color:var(--ink-light); line-height:2.2; font-size:0.95rem; margin-bottom:1.2rem;">
+        <li>Clear and simple — avoid jargon like "timestamp markers" or "chapter indexing"</li>
+        <li>Helpful — emphasize time saving and navigation benefits for both creators and viewers</li>
+        <li>Transparent — explain how chapters work and what creators need to do to enable them</li>
+      </ul>
+
+      <p><strong>Recommended Microcopy:</strong></p>
+      <table class="prd-table">
+        <tr><th>UI Element</th><th>Copy</th></tr>
+        <tr><td>Creator prompt in Studio</td><td>"Add chapters to help viewers navigate your video."</td></tr>
+        <tr><td>Viewer instruction</td><td>"Click a chapter to jump to that section."</td></tr>
+        <tr><td>Chapter editor placeholder</td><td>"e.g., 0:00 Introduction, 5:30 Binary Trees, 12:45 Practice Problems"</td></tr>
+        <tr><td>Validation error</td><td>"Timestamps must be in order and within your video's duration."</td></tr>
+      </table>
+    </div>
+
+    <!-- 11. Assumptions & Constraints -->
+    <div class="prd-section">
+      <div class="prd-section-label">Section 11</div>
+      <h2>Assumptions &amp; Constraints</h2>
+      <p><strong>Assumptions:</strong></p>
+      <ul style="margin-left:1.5rem; color:var(--ink-light); line-height:2.2; font-size:0.95rem; margin-bottom:1.5rem;">
+        <li>Creators will manually add chapters using the YouTube Studio chapter editor</li>
+        <li>Viewers have internet connectivity when watching videos and using chapter navigation</li>
+        <li>All target platforms (Android, iOS, Web, Desktop) support rendering chapter markers in the video progress bar</li>
+      </ul>
+      <p><strong>Constraints:</strong></p>
+      <ul style="margin-left:1.5rem; color:var(--ink-light); line-height:2.2; font-size:0.95rem;">
+        <li>Chapters are creator defined only in v1, no auto-generated chapters</li>
+        <li>YouTube Shorts will not support chapters in v1</li>
+        <li>No custom chapter styling (colors, fonts) in v1</li>
+        <li>No hover thumbnail previews for chapter markers in v1</li>
+      </ul>
+    </div>
+
+    <!-- 12. Release Plan -->
+    <div class="prd-section">
+      <div class="prd-section-label">Section 12</div>
+      <h2>Release Plan &amp; Milestones</h2>
+      <table class="prd-table">
+        <tr><th>Phase</th><th>Target</th><th>Scope</th><th>Markets &amp; Rollout</th></tr>
+        <tr>
+          <td><strong>Phase 1 - Internal Pilot + Limited Beta</strong></td>
+          <td>August 2026</td>
+          <td>FR-01 to FR-08, full core chapter functionality</td>
+          <td>India Tier-1 cities + US pilot · Web first, mobile 2 weeks later · 5% → 20% → 100% over 6 weeks</td>
+        </tr>
+        <tr>
+          <td><strong>Phase 2 - Expanded Beta</strong></td>
+          <td>November 2026</td>
+          <td>All Phase 1 FRs + NFR-05 (scalability under peak load)</td>
+          <td>India nationwide + US, UK, Brazil · Web + Mobile + Desktop · 20% → 60% → 100% over 8 weeks</td>
+        </tr>
+        <tr>
+          <td><strong>Phase 3 - Global Launch</strong></td>
+          <td>February 2027</td>
+          <td>All Phase 1 &amp; 2 FRs + future enhancements (auto-generated chapters, hover previews, chapter recommendations)</td>
+          <td>Global rollout, all YouTube markets · All platforms · 30% → 70% → 100% over 10 weeks</td>
+        </tr>
+      </table>
+    </div>
+
+    <!-- 13. Open Questions -->
+    <div class="prd-section">
+      <div class="prd-section-label">Section 13</div>
+      <h2>Open Questions</h2>
+      <table class="prd-table">
+        <tr><th>#</th><th>Question</th><th>Owner</th><th>Due</th></tr>
+        <tr><td>OQ-01</td><td>Should we add AI auto-generated chapters in v2? What is the technical feasibility and accuracy threshold required before launching to creators?</td><td>PM + Engineering + Creator Exp</td><td>August 1, 2026</td></tr>
+        <tr><td>OQ-02</td><td>Should YouTube Shorts support chapters in v2? Given the short-form format, do chapters provide meaningful value for sub-60-second content?</td><td>PM + Shorts Team</td><td>August 5, 2026</td></tr>
+        <tr><td>OQ-03</td><td>Should we recommend individual chapters (not just full videos) in YouTube's recommendation engine? What are the implications for watch time and creator revenue?</td><td>PM + Recommendations Team</td><td>August 10, 2026</td></tr>
+        <tr><td>OQ-04</td><td>Should hovering over a chapter marker in the progress bar show a thumbnail preview of that chapter? What is the performance cost on low-end devices?</td><td>Engineering + Design</td><td>August 10, 2026</td></tr>
+        <tr><td>OQ-05</td><td>Should creators be able to customize chapter colors or fonts in v2 to match their brand? Does this introduce accessibility compliance risks?</td><td>Design + Accessibility Team</td><td>September 1, 2026</td></tr>
+      </table>
+    </div>
+
+  </div><!-- /prd-content -->
+
+  <footer class="footer">
+    <div class="footer-inner">
+      <div class="footer-brand">PRD Project</div>
+      <p>Built as a MBA portfolio project to master Product Management fundamentals through hands-on PRD writing.</p>
+      <a href="../index.html" style="color:var(--yellow); font-weight:600; text-decoration:none;">← Back to Home</a>
+    </div>
+  </footer>
+
+</body>
+</html>
