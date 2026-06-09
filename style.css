@@ -795,6 +795,7 @@ em { font-style: italic; color: var(--accent); }
 .company-logo.amazon { background: #FF9900; color: white; font-style: italic; font-family: Georgia, serif; }
 .company-logo.meta { background: darkmagenta; color: white; }
 .company-logo.zomato { background: red; color: white; }
+.company-logo.spotify { background: darkgreen; color: white; }
 
 .company-header h3 {
   font-size: 1.3rem;
