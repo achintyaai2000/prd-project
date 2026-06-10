@@ -796,6 +796,7 @@ em { font-style: italic; color: var(--accent); }
 .company-logo.meta { background: darkmagenta; color: white; }
 .company-logo.zomato { background: red; color: white; }
 .company-logo.spotify { background: darkgreen; color: white; }
+.company-logo.twitter { background: black; color: white; }
 
 .company-header h3 {
   font-size: 1.3rem;

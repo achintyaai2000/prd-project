@@ -1,0 +1,600 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Twitter - Community Notes | PRD Project</title>
+  <link rel="stylesheet" href="../style.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,600;0,9..144,800;1,9..144,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+  <style>
+    /* ── Navbar: logo left, links right ── */
+    .prd-page .navbar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .prd-page .navbar .nav-center { display: none; }
+
+    /* ── Hero: text left, logo right ── */
+    .prd-hero-section {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 3rem;
+    }
+    .prd-hero-left { flex: 1; position: relative; z-index: 1; }
+    .prd-hero-right {
+      flex-shrink: 0;
+      position: relative;
+      z-index: 1;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .prd-company-logo {
+      width: 260px;
+      height: 260px;
+      object-fit: contain;
+      opacity: 0.92;
+      filter: drop-shadow(0 8px 32px rgba(0,0,0,0.4));
+      animation: floatLogo 3s ease-in-out infinite;
+    }
+    @keyframes floatLogo {
+      0%, 100% { transform: translateY(0px); }
+      50%       { transform: translateY(-16px); }
+    }
+
+    /* ── PRD content: tables scroll on small screens ── */
+    .prd-table-wrapper {
+      width: 100%;
+      overflow-x: auto;
+      -webkit-overflow-scrolling: touch;
+    }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 900px) {
+
+      /* Navbar */
+      .prd-page .navbar {
+        padding: 0.9rem 1.25rem;
+      }
+      .prd-page .navbar .nav-links {
+        display: flex;
+        gap: 1rem;
+      }
+      .prd-page .navbar .nav-links a {
+        font-size: 0.8rem;
+      }
+
+      /* Hero — stack vertically, logo below text */
+      .prd-hero-section {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 2rem;
+        padding: 3rem 1.5rem 2.5rem;
+      }
+      .prd-hero-right {
+        width: 100%;
+        justify-content: center;
+      }
+      .prd-company-logo {
+        width: 160px;
+        height: 160px;
+      }
+
+      /* PRD content area */
+      .prd-content {
+        padding: 2rem 1.25rem;
+      }
+
+      /* Section headings */
+      .prd-section h2 {
+        font-size: 1.4rem;
+      }
+
+      /* Tables — horizontal scroll */
+      .prd-table {
+        display: block;
+        overflow-x: auto;
+        -webkit-overflow-scrolling: touch;
+        white-space: nowrap;
+        font-size: 0.8rem;
+      }
+      .prd-table th,
+      .prd-table td {
+        padding: 0.65rem 0.75rem;
+      }
+
+      /* Requirement blocks */
+      .req-block {
+        padding: 1rem 1.1rem;
+      }
+      .req-block h4 { font-size: 0.92rem; }
+      .req-block p  { font-size: 0.82rem; }
+
+      /* User story cards */
+      .user-story-card {
+        font-size: 0.82rem;
+        padding: 0.85rem 1rem;
+      }
+
+      /* Persona cards */
+      .persona-card {
+        padding: 1.25rem;
+      }
+      .persona-card .persona-header {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 0.5rem;
+      }
+
+      /* Meta chips — wrap nicely */
+      .prd-meta-row {
+        gap: 0.6rem;
+      }
+      .prd-meta-chip {
+        font-size: 0.72rem;
+        padding: 0.3rem 0.75rem;
+      }
+
+      /* Breadcrumb */
+      .prd-breadcrumb {
+        font-size: 0.72rem;
+      }
+
+      /* Hero title */
+      .prd-hero-section h1 {
+        font-size: clamp(1.6rem, 6vw, 2.4rem);
+      }
+
+      /* Lists inside sections */
+      .prd-section ul {
+        margin-left: 1rem;
+        font-size: 0.875rem;
+      }
+
+      /* Footer */
+      .footer {
+        padding: 2rem 1.25rem;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .prd-company-logo {
+        width: 110px;
+        height: 110px;
+      }
+      .prd-hero-section h1 {
+        font-size: 1.5rem;
+      }
+      .prd-meta-chip {
+        font-size: 0.65rem;
+        padding: 0.25rem 0.6rem;
+      }
+      .prd-section h2 {
+        font-size: 1.2rem;
+      }
+    }
+  </style>
+</head>
+<body class="prd-page">
+
+  <nav class="navbar">
+    <a href="../index.html" class="nav-logo">
+      <img src="https://cdn-icons-png.flaticon.com/512/2921/2921222.png" alt="PRD Logo" class="nav-logo-img"/>
+      PRD <span>Project</span>
+    </a>
+    <div class="nav-links">
+      <a href="../index.html">← Home</a>
+      <a href="../index.html#prds">PRD Library</a>
+    </div>
+  </nav>
+
+  <div class="prd-hero-section">
+    <div class="prd-hero-left">
+      <div class="prd-breadcrumb">
+        <a href="../index.html">Home</a> &nbsp;/&nbsp;
+        <a href="../index.html#prds">PRD Library</a> &nbsp;/&nbsp;
+        Twitter
+      </div>
+      <h1>Twitter<br/><em>Community Notes</em></h1>
+      <p class="subtitle">A crowd sourced context layer that lets eligible contributors add factual notes to potentially misleading posts, visible to everyone once broadly agreed helpful across diverse viewpoints</p>
+      <div class="prd-meta-row">
+        <span class="prd-meta-chip">📅 Version 1.1</span>
+        <span class="prd-meta-chip">🏷️ Trust &amp; Safety</span>
+        <span class="prd-meta-chip">📱 Android · iOS · Web</span>
+        <span class="prd-meta-chip">🔄 Status: In Review</span>
+      </div>
+    </div>
+    <div class="prd-hero-right">
+      <img
+        src="../images/twitter.png"
+        alt="Twitter / X Logo"
+        class="prd-company-logo"
+      />
+    </div>
+  </div>
+
+  <div class="prd-content">
+
+    <!-- 1. Document Header -->
+    <div class="prd-section">
+      <div class="prd-section-label">Section 01</div>
+      <h2>Document Header</h2>
+      <table class="prd-table">
+        <tr><th>Field</th><th>Details</th></tr>
+        <tr><td><strong>Product Name</strong></td><td>Community Notes</td></tr>
+        <tr><td><strong>Doc Version</strong></td><td>v1.1</td></tr>
+        <tr><td><strong>Author</strong></td><td>Achintya, Associate Product Manager</td></tr>
+        <tr><td><strong>Status</strong></td><td>In Review</td></tr>
+        <tr><td><strong>Last Updated</strong></td><td>June 10, 2026</td></tr>
+        <tr><td><strong>Target Release</strong></td><td>Q4 2026</td></tr>
+        <tr><td><strong>Stakeholders</strong></td><td>Engineering (Backend, Mobile, Web), Design (UX/UI), Mobile (Android, iOS), Web/Desktop, Data &amp; Analytics, Trust &amp; Safety, Legal &amp; Policy, Moderation Team, Research Team, Marketing &amp; Growth, QA &amp; SRE, Community Management</td></tr>
+      </table>
+    </div>
+
+    <!-- 2. Executive Summary -->
+    <div class="prd-section">
+      <div class="prd-section-label">Section 02</div>
+      <h2>Executive Summary</h2>
+      <p>Users often encounter viral posts that are misleading, lack context, or contain outdated information. Traditional fact checking methods struggle to scale to the volume and speed of content shared on the platform. Rapid spread of misinformation, platform trust issues, scaling limitations of human moderation, and the need for additional context make this a critical problem.</p>
+      <p>This PRD proposes <strong>Community Notes</strong>: a feature that allows eligible users to add contextual notes to posts that may be misleading, incomplete, or lacking important information. If enough contributors with <em>diverse viewpoints</em> agree that a note is helpful, it becomes visible to everyone.</p>
+
+      <p style="margin-top:1.5rem;"><strong>Key capabilities (v1)</strong></p>
+      <ul style="margin-left:1.5rem; color:var(--ink-light); line-height:2.2; font-size:0.95rem; margin-bottom:1.5rem;">
+        <li>Eligibility based note writing (users meeting certain criteria)</li>
+        <li>Note rating system with diverse viewpoint requirements</li>
+        <li>Note visibility when broadly agreed as helpful</li>
+        <li>Note display on posts as context cards</li>
+        <li>Basic note categories: misleading, incomplete, lacks context, etc.</li>
+        <li>Contributor reputation tracking</li>
+      </ul>
+
+      <p><strong>Business &amp; User Impact</strong></p>
+      <table class="prd-table">
+        <tr><th>Stakeholder</th><th>Impact</th></tr>
+        <tr><td>Users</td><td>Better ability to distinguish facts from rumors; quick access to additional context; increased confidence in content</td></tr>
+        <tr><td>Platform</td><td>Reduced misinformation reports; lower moderation workload; higher user trust and credibility</td></tr>
+        <tr><td>Advertisers</td><td>Improved brand safety; reduced reputational risks</td></tr>
+      </table>
+    </div>
+
+    <!-- 3. Problem Statement -->
+    <div class="prd-section">
+      <div class="prd-section-label">Section 03</div>
+      <h2>Problem Statement</h2>
+
+      <p><strong>The Core Problem:</strong> Users frequently encounter viral posts that are misleading, lack context, or contain outdated information. Traditional fact checking methods cannot scale to the volume and speed of content on the platform.</p>
+
+      <p><strong>Who Has This Problem?</strong></p>
+      <ul style="margin-left:1.5rem; color:var(--ink-light); line-height:2.2; font-size:0.95rem; margin-bottom:1.2rem;">
+        <li><strong>News consumers</strong> who cannot easily determine whether a viral claim is trustworthy</li>
+        <li><strong>Casual social media users</strong> who don't have time to fact check every post they encounter</li>
+        <li><strong>Researchers &amp; journalists</strong> for whom viral posts often lack source attribution or context</li>
+        <li><strong>Platform moderators</strong> who need scalable ways to surface contextual information</li>
+      </ul>
+
+      <p><strong>Evidence of the Problem</strong></p>
+      <table class="prd-table">
+        <tr><th>Signal</th><th>Data Point</th></tr>
+        <tr><td>Speed of misinformation spread</td><td>False or misleading posts can reach millions within hours; official fact checks often arrive too late</td></tr>
+        <tr><td>Platform trust issues</td><td>Users increasingly question reliability of information on social media, reducing engagement and credibility</td></tr>
+        <tr><td>Scaling problem</td><td>Human moderation teams cannot review every post; professional fact checkers are limited in number</td></tr>
+        <tr><td>Context gaps</td><td>Many posts are technically correct but omit critical context, not every misleading post is outright false</td></tr>
+      </table>
+
+      <p style="margin-top:1.5rem;"><strong>What Happens Without Community Notes?</strong></p>
+      <ul style="margin-left:1.5rem; color:var(--ink-light); line-height:2.2; font-size:0.95rem;">
+        <li>Users face greater exposure to misleading information and have more difficulty distinguishing facts from rumors</li>
+        <li>Platform faces increased criticism, greater moderation burden, and lower user trust</li>
+        <li>Advertisers face concerns about brand safety and potential reputational risks</li>
+      </ul>
+    </div>
+
+    <!-- 4. Goals & Objectives -->
+    <div class="prd-section">
+      <div class="prd-section-label">Section 04</div>
+      <h2>Goals &amp; Non-Goals</h2>
+
+      <p><strong>Business Goals</strong></p>
+      <table class="prd-table">
+        <tr><th>Goal</th><th>Target</th><th>Rationale</th></tr>
+        <tr><td>Reduce misinformation reports</td><td>≥ 20% within 6 months of launch</td><td>Community Notes provide context before users report</td></tr>
+        <tr><td>Lower moderation workload</td><td>≥ 15% within 6 months</td><td>Notes scale context provision without manual review</td></tr>
+        <tr><td>Strengthen platform trust &amp; credibility</td><td>Qualitative, higher trust survey scores</td><td>Position platform as a trusted source of information</td></tr>
+      </table>
+
+      <br/>
+      <p><strong>User Goals</strong></p>
+      <ul style="margin-left:1.5rem; color:var(--ink-light); line-height:2.2; font-size:0.95rem; margin-bottom:1.5rem;">
+        <li>Quickly determine if a post is trustworthy - understand context in ≤ 2 seconds</li>
+        <li>Access additional context before sharing - notes appear before the share button</li>
+        <li>Contribute context as an eligible user - write notes in ≤ 3 taps, rate notes from others</li>
+      </ul>
+
+      <p><strong>🚫 Non-Goals (Out of Scope for v1)</strong></p>
+      <ul style="margin-left:1.5rem; color:var(--ink-light); line-height:2; font-size:0.95rem;">
+        <li>Note editing or removal by post authors</li>
+        <li>Anonymous notes, all notes must be from identifiable contributors</li>
+        <li>Note tipping or contributor rewards</li>
+        <li>Multi language auto-translation of notes</li>
+        <li>Formal note disputes by post authors</li>
+      </ul>
+    </div>
+
+    <!-- 5. Success Metrics -->
+    <div class="prd-section">
+      <div class="prd-section-label">Section 05</div>
+      <h2>Success Metrics / KPIs</h2>
+
+      <p style="margin-bottom:1rem;"><strong>Success Metrics</strong></p>
+      <table class="prd-table">
+        <tr><th>Metric</th><th>Target</th><th>Timeframe</th><th>Ownership</th></tr>
+        <tr><td>Number of active note contributors</td><td>Grow steadily</td><td>6 months</td><td>Product / Data</td></tr>
+        <tr><td>Notes written per day</td><td>Grow steadily</td><td>6 months</td><td>Product / Data</td></tr>
+        <tr><td>Percentage of notes rated helpful</td><td>≥ 60%</td><td>6 months</td><td>Product / Data</td></tr>
+        <tr><td>User trust survey scores</td><td>Increase</td><td>6 months</td><td>Research / Product</td></tr>
+        <tr><td>Reduction in misinformation reports</td><td>≥ 20%</td><td>6 months</td><td>Trust &amp; Safety / Product</td></tr>
+      </table>
+
+      <br/>
+      <p style="margin-bottom:1rem;"><strong>Key Performance Indicators (KPIs)</strong></p>
+      <table class="prd-table">
+        <tr><th>KPI</th><th>Target</th><th>Timeframe</th><th>Measurement Method</th><th>Ownership</th></tr>
+        <tr><td>Note contributor adoption rate</td><td>≥ 5% of users</td><td>6 months</td><td>Event tracking</td><td>Product / Data</td></tr>
+        <tr><td>Notes per active contributor (daily)</td><td>≥ 3</td><td>6 months</td><td>Event tracking</td><td>Product / Data</td></tr>
+        <tr><td>Note helpfulness rate</td><td>≥ 60%</td><td>6 months</td><td>Rating tracking</td><td>Product / Data</td></tr>
+        <tr><td>Note visibility rate</td><td>≥ 40%</td><td>6 months</td><td>Visibility tracking</td><td>Product / Data</td></tr>
+        <tr><td>Misinformation report rate (per 1,000 posts)</td><td>−20%</td><td>6 months</td><td>Report tracking</td><td>Trust &amp; Safety</td></tr>
+        <tr><td>Moderation tickets per 1,000 posts</td><td>−15%</td><td>6 months</td><td>Ticket tracking</td><td>Moderation</td></tr>
+        <tr><td>Crash rate related to notes feature</td><td>≤ 0.5%</td><td>1 month</td><td>Crash analytics</td><td>Engineering / QA</td></tr>
+        <tr><td>Support tickets per 1,000 users (notes-related)</td><td>≤ 5</td><td>3 months</td><td>Support ticket tagging</td><td>CX / Product</td></tr>
+      </table>
+    </div>
+
+    <!-- 6. User Personas -->
+    <div class="prd-section">
+      <div class="prd-section-label">Section 06</div>
+      <h2>User Personas</h2>
+
+      <div class="persona-card">
+        <div class="persona-header">
+          <div class="persona-avatar">📰</div>
+          <div>
+            <div class="persona-name">Rahul, 26 - News Enthusiast</div>
+            <div class="persona-role">Delhi · Marketing Professional · High tech comfort</div>
+          </div>
+        </div>
+        <p><span class="persona-label">Context:</span> Follows political and economic developments; shares news with friends and on social media.</p>
+        <p><span class="persona-label">Pain Point:</span> Cannot easily determine whether a viral claim is trustworthy; time consuming to verify information independently.</p>
+        <p><span class="persona-label">Goal:</span> Get additional context from contributors before sharing, and make informed decisions about what to share.</p>
+      </div>
+
+      <div class="persona-card">
+        <div class="persona-header">
+          <div class="persona-avatar">📱</div>
+          <div>
+            <div class="persona-name">Sarah, 31 - Casual User</div>
+            <div class="persona-role">Mumbai · Teacher · High tech comfort</div>
+          </div>
+        </div>
+        <p><span class="persona-label">Context:</span> Consumes trending content and stays updated; doesn't fact check every post she encounters.</p>
+        <p><span class="persona-label">Pain Point:</span> Doesn't have time to verify information; may accidentally share misleading content.</p>
+        <p><span class="persona-label">Goal:</span> Quickly see missing context or disputed claims, and avoid sharing misinformation inadvertently.</p>
+      </div>
+
+      <div class="persona-card">
+        <div class="persona-header">
+          <div class="persona-avatar">🎙️</div>
+          <div>
+            <div class="persona-name">Michael, 38 - Journalist</div>
+            <div class="persona-role">Bengaluru · News Journalist · Very high tech comfort</div>
+          </div>
+        </div>
+        <p><span class="persona-label">Context:</span> Monitors breaking news and public discourse; needs accurate information for reporting.</p>
+        <p><span class="persona-label">Pain Point:</span> Viral posts often lack source attribution or context; time consuming to verify every claim.</p>
+        <p><span class="persona-label">Goal:</span> Surface relevant information and references quickly; make informed decisions about what to report.</p>
+      </div>
+
+      <div class="persona-card">
+        <div class="persona-header">
+          <div class="persona-avatar">🛡️</div>
+          <div>
+            <div class="persona-name">Priya, 34 - Platform Moderator</div>
+            <div class="persona-role">Hyderabad · Trust &amp; Safety Moderator · High tech comfort</div>
+          </div>
+        </div>
+        <p><span class="persona-label">Context:</span> Reviews posts for misinformation and harmful content; needs scalable ways to surface context.</p>
+        <p><span class="persona-label">Pain Point:</span> Cannot manually review every post; faces high volume of misinformation reports daily.</p>
+        <p><span class="persona-label">Goal:</span> Use Community Notes to scale context provision and reduce manual moderation workload.</p>
+      </div>
+    </div>
+
+    <!-- 7. User Stories -->
+    <div class="prd-section">
+      <div class="prd-section-label">Section 07</div>
+      <h2>User Journey &amp; User Stories</h2>
+
+      <p style="margin-bottom:0.75rem; font-weight:600;">Primary User Journey - Note Contributor</p>
+      <ol style="margin-left:1.5rem; color:var(--ink-light); line-height:2.2; font-size:0.95rem; margin-bottom:1.5rem;">
+        <li>User encounters a post that lacks context or appears misleading</li>
+        <li>User taps "Add Note", writes context or correction, and selects a note category</li>
+        <li>Note is submitted and enters the rating queue</li>
+        <li>Contributors with diverse viewpoints rate the note</li>
+        <li>Once enough contributors agree it is helpful, the note becomes visible to all users</li>
+      </ol>
+
+      <p style="margin-bottom:0.75rem; font-weight:600;">Primary User Journey - Note Viewer</p>
+      <ol style="margin-left:1.5rem; color:var(--ink-light); line-height:2.2; font-size:0.95rem; margin-bottom:1.5rem;">
+        <li>User encounters a post with a visible Community Note</li>
+        <li>User reads the context card to understand the correction or missing information</li>
+        <li>User makes an informed decision, whether to share, engage, or skip</li>
+      </ol>
+
+      <p style="margin-bottom:1rem; font-weight:600;">Epic 1 - Note Writing &amp; Submission</p>
+      <div class="user-story-card"><strong>US-01 · P0</strong> — As an eligible user, I want to write a note on a post so that I can provide context or corrections.</div>
+      <div class="user-story-card"><strong>US-02 · P0</strong> — As an eligible user, I want to select a note category so that my note is properly classified.</div>
+      <div class="user-story-card"><strong>US-03 · P0</strong> — As an eligible user, I want to submit my note for rating so that others can evaluate it.</div>
+      <div class="user-story-card"><strong>US-04 · P0</strong> — As an eligible user, I want to see if my note became visible so that I know it was helpful.</div>
+      <div class="user-story-card"><strong>US-05 · P1</strong> — As an eligible user, I want guidance on writing helpful notes so that I contribute quality content.</div>
+
+      <p style="margin:1.5rem 0 1rem; font-weight:600;">Epic 2 — Note Rating &amp; Visibility</p>
+      <div class="user-story-card"><strong>US-06 · P0</strong> — As a contributor, I want to rate notes from others so that I help determine their visibility.</div>
+      <div class="user-story-card"><strong>US-07 · P0</strong> — As a contributor, I want to see notes from diverse viewpoints so that ratings are balanced.</div>
+      <div class="user-story-card"><strong>US-08 · P0</strong> — As a user, I want notes to become visible when broadly agreed helpful so that I get reliable context.</div>
+      <div class="user-story-card"><strong>US-09 · P0</strong> — As a user, I want notes to appear before I share a post so that I make informed decisions.</div>
+      <div class="user-story-card"><strong>US-10 · P0</strong> — As a product team, I want to track note rating data so that I can optimise visibility logic.</div>
+    </div>
+
+    <!-- 8. Functional Requirements -->
+    <div class="prd-section">
+      <div class="prd-section-label">Section 08</div>
+      <h2>Functional Requirements</h2>
+
+      <div class="req-block">
+        <div class="req-id">FR-01 &nbsp;<span class="priority-tag p0">P0</span></div>
+        <h4>Eligibility Requirements for Note Writing</h4>
+        <p>Users must meet eligibility criteria to write notes (e.g. account age, activity level, no past violations). The system must verify eligibility before allowing note writing.</p>
+      </div>
+
+      <div class="req-block">
+        <div class="req-id">FR-02 &nbsp;<span class="priority-tag p0">P0</span></div>
+        <h4>Note Writing Interface</h4>
+        <p>Eligible users must be able to write notes (text input), select a note category (misleading, incomplete, lacks context, etc.), and submit notes for rating. The interface must be simple and intuitive, completable in ≤ 3 taps.</p>
+      </div>
+
+      <div class="req-block">
+        <div class="req-id">FR-03 &nbsp;<span class="priority-tag p0">P0</span></div>
+        <h4>Note Rating System</h4>
+        <p>Contributors must be able to rate notes as helpful or not helpful. The system must require ratings from contributors with diverse viewpoints before determining visibility to prevent ideological or coordinated bias.</p>
+      </div>
+
+      <div class="req-block">
+        <div class="req-id">FR-04 &nbsp;<span class="priority-tag p0">P0</span></div>
+        <h4>Note Visibility Logic</h4>
+        <p>Notes become visible only when enough contributors rate them helpful AND those contributors include diverse viewpoints. The system must calculate visibility automatically without manual intervention.</p>
+      </div>
+
+      <div class="req-block">
+        <div class="req-id">FR-05 &nbsp;<span class="priority-tag p0">P0</span></div>
+        <h4>Note Display on Posts</h4>
+        <p>Visible notes must appear on posts as context cards. Notes must load within ≤ 2 seconds and must be visible before the share button to ensure users see context before amplifying a post.</p>
+      </div>
+
+      <div class="req-block">
+        <div class="req-id">FR-06 &nbsp;<span class="priority-tag p0">P0</span></div>
+        <h4>Cross Platform Note Support</h4>
+        <p>Notes must work on Mobile (Android, iOS) and Web with a consistent UX across all platforms. No critical functionality should be missing on any platform.</p>
+      </div>
+
+      <div class="req-block">
+        <div class="req-id">FR-07 &nbsp;<span class="priority-tag p0">P0</span></div>
+        <h4>Contributor Reputation Tracking</h4>
+        <p>The system must track contributor reputation based on note helpfulness ratings and past contribution quality. This data informs eligibility determination and rating weight calculations.</p>
+      </div>
+
+      <div class="req-block">
+        <div class="req-id">FR-08 &nbsp;<span class="priority-tag p0">P0</span></div>
+        <h4>Note Event Tracking</h4>
+        <p>The system must track: notes written, notes rated, and notes visible. This data supports analytics, product optimisation, and stakeholder reporting.</p>
+      </div>
+    </div>
+
+    <!-- 9. NFRs -->
+    <div class="prd-section">
+      <div class="prd-section-label">Section 09</div>
+      <h2>Non-Functional Requirements</h2>
+      <table class="prd-table">
+        <tr><th>NFR ID</th><th>Category</th><th>Requirement</th><th>Priority</th></tr>
+        <tr><td>NFR-01</td><td>Performance</td><td>Notes must load within ≤ 2 seconds on average devices and networks</td><td>P0</td></tr>
+        <tr><td>NFR-02</td><td>Consistency</td><td>Notes must behave consistently across Mobile (Android, iOS) and Web</td><td>P0</td></tr>
+        <tr><td>NFR-03</td><td>Accessibility</td><td>Notes must be accessible via keyboard navigation and compatible with screen readers (WCAG 2.1 AA)</td><td>P0</td></tr>
+        <tr><td>NFR-04</td><td>Reliability</td><td>System must handle network failures gracefully and show clear error messages if notes fail to load</td><td>P0</td></tr>
+        <tr><td>NFR-05</td><td>Scalability</td><td>System must support high concurrent usage during peak hours without performance degradation</td><td>P1</td></tr>
+        <tr><td>NFR-06</td><td>Availability</td><td>Notes feature must maintain ≥ 99.5% uptime during operational hours</td><td>P0</td></tr>
+        <tr><td>NFR-07</td><td>Observability</td><td>System must log key events (note written, rated, visible) and provide monitoring dashboards for error and visibility rates</td><td>P0</td></tr>
+        <tr><td>NFR-08</td><td>Privacy</td><td>Note data must comply with platform privacy policies and applicable regulations (e.g. GDPR); no sensitive user data exposed</td><td>P0</td></tr>
+        <tr><td>NFR-09</td><td>Security</td><td>System must detect and prevent coordinated brigading, rating abuse, and bias manipulation</td><td>P0</td></tr>
+        <tr><td>NFR-10</td><td>Bias Mitigation</td><td>System must require ratings from contributors with differing perspectives to reduce ideological bias in note visibility</td><td>P0</td></tr>
+      </table>
+    </div>
+
+    <!-- 10. Design & UX Requirements -->
+    <div class="prd-section">
+      <div class="prd-section-label">Section 10</div>
+      <h2>Design &amp; UX Requirements</h2>
+
+      <p><strong>Entry Points</strong></p>
+      <ul style="margin-left:1.5rem; color:var(--ink-light); line-height:2.2; font-size:0.95rem; margin-bottom:1.5rem;">
+        <li><strong>Post view:</strong> "Add Note" button visible to eligible users; visible notes displayed as context cards on posts</li>
+        <li><strong>Note dashboard:</strong> Contributors can view their submitted notes and track their rating status</li>
+      </ul>
+
+      <p><strong>Tone &amp; Messaging Guidelines</strong></p>
+      <table class="prd-table">
+        <tr><th>Principle</th><th>Guidance</th><th>Example Microcopy</th></tr>
+        <tr><td>Clear &amp; Neutral</td><td>Avoid biased or leading language in all note related UI</td><td>"Add a note to provide context."</td></tr>
+        <tr><td>Trustworthy</td><td>Emphasise reliability and that visibility reflects broad agreement</td><td>"This note has been agreed helpful by contributors."</td></tr>
+        <tr><td>Transparent</td><td>Explain clearly how notes become visible and what pending means</td><td>"Note not yet visible (pending ratings)."</td></tr>
+      </table>
+    </div>
+
+    <!-- 11. Assumptions & Constraints -->
+    <div class="prd-section">
+      <div class="prd-section-label">Section 11</div>
+      <h2>Assumptions &amp; Constraints</h2>
+      <p><strong>Assumptions:</strong></p>
+      <ul style="margin-left:1.5rem; color:var(--ink-light); line-height:2.2; font-size:0.95rem; margin-bottom:1.5rem;">
+        <li>Users will write honest, helpful notes in good faith</li>
+        <li>Contributors will rate notes fairly and without coordinated bias</li>
+        <li>The diverse viewpoint requirement is sufficient to reduce ideological bias</li>
+      </ul>
+      <p><strong>Constraints:</strong></p>
+      <ul style="margin-left:1.5rem; color:var(--ink-light); line-height:2.2; font-size:0.95rem;">
+        <li>Eligibility requirements will reduce the available contributor pool</li>
+        <li>Not all posts will have notes, coverage will be incomplete at launch</li>
+        <li>Brigading and coordinated manipulation are inherent challenges to address continuously</li>
+        <li>A speed vs. accuracy trade-off exists: faster visibility may increase bias risk</li>
+      </ul>
+    </div>
+
+    <!-- 12. Release Plan -->
+    <div class="prd-section">
+      <div class="prd-section-label">Section 12</div>
+      <h2>Release Plan &amp; Milestones</h2>
+      <table class="prd-table">
+        <tr><th>Phase</th><th>Target</th><th>Scope</th><th>Markets</th><th>Rollout</th></tr>
+        <tr><td><strong>Phase 1 - Limited Beta</strong></td><td>August 2026</td><td>FR-01 to FR-08 · Internal pilot + Birdwatch rebrand</td><td>US, UK, India (Tier-1)</td><td>5% → 20% → 100% over 6 weeks. Mobile first, Web 2 weeks later.</td></tr>
+        <tr><td><strong>Phase 2 - Expanded Beta</strong></td><td>November 2026</td><td>All Phase 1 + NFR-05 (scalability)</td><td>US, UK, India (nationwide), Brazil, Canada</td><td>20% → 60% → 100% over 8 weeks. Mobile + Web.</td></tr>
+        <tr><td><strong>Phase 3 - Global Launch</strong></td><td>February 2027</td><td>All Phase 1 &amp; 2 features + future enhancements</td><td>Global</td><td>30% → 70% → 100% over 10 weeks. All platforms.</td></tr>
+      </table>
+    </div>
+
+    <!-- 13. Open Questions -->
+    <div class="prd-section">
+      <div class="prd-section-label">Section 13</div>
+      <h2>Open Questions</h2>
+      <table class="prd-table">
+        <tr><th>#</th><th>Question</th><th>Consideration</th></tr>
+        <tr><td>OQ-01</td><td>Should we allow anonymous notes in v2 for sensitive topics?</td><td>Anonymity may increase honest contributions but risks reducing accountability</td></tr>
+        <tr><td>OQ-02</td><td>Should contributors be tipped or rewarded in v2?</td><td>Rewards may boost participation but could incentivise low quality notes</td></tr>
+        <tr><td>OQ-03</td><td>Should we add auto-translation of notes in v2?</td><td>Expands reach globally but introduces translation accuracy risks</td></tr>
+        <tr><td>OQ-04</td><td>Should post authors formally dispute notes in v2?</td><td>Adds accountability but may create adversarial dynamics</td></tr>
+        <tr><td>OQ-05</td><td>Should post authors be able to edit or remove notes in v2?</td><td>Raises concerns about authors suppressing legitimate context</td></tr>
+      </table>
+    </div>
+
+  </div><!-- /prd-content -->
+
+  <footer class="footer">
+    <div class="footer-inner">
+      <div class="footer-brand">PRD Project</div>
+      <p>Built as a MBA portfolio project to master Product Management fundamentals through hands on PRD writing.</p>
+      <a href="../index.html" style="color:var(--yellow); font-weight:600; text-decoration:none;">← Back to Home</a>
+    </div>
+  </footer>
+
+</body>
+</html>
