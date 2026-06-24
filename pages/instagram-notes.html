@@ -1,0 +1,568 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Instagram - Reels | PRD Project</title>
+  <link rel="stylesheet" href="../style.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,600;0,9..144,800;1,9..144,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+  <style>
+    /* ── Navbar: logo left, links right ── */
+    .prd-page .navbar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .prd-page .navbar .nav-center { display: none; }
+
+    /* ── Hero: text left, logo right ── */
+    .prd-hero-section {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 3rem;
+    }
+    .prd-hero-left { flex: 1; position: relative; z-index: 1; }
+    .prd-hero-right {
+      flex-shrink: 0;
+      position: relative;
+      z-index: 1;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .prd-company-logo {
+      width: 260px;
+      height: 260px;
+      object-fit: contain;
+      opacity: 0.92;
+      filter: drop-shadow(0 8px 32px rgba(0,0,0,0.4));
+      animation: floatLogo 3s ease-in-out infinite;
+    }
+    @keyframes floatLogo {
+      0%, 100% { transform: translateY(0px); }
+      50%       { transform: translateY(-16px); }
+    }
+
+    /* ── PRD content: tables scroll on small screens ── */
+    .prd-table-wrapper {
+      width: 100%;
+      overflow-x: auto;
+      -webkit-overflow-scrolling: touch;
+    }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 900px) {
+
+      .prd-page .navbar {
+        padding: 0.9rem 1.25rem;
+      }
+      .prd-page .navbar .nav-links {
+        display: flex;
+        gap: 1rem;
+      }
+      .prd-page .navbar .nav-links a {
+        font-size: 0.8rem;
+      }
+
+      .prd-hero-section {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 2rem;
+        padding: 3rem 1.5rem 2.5rem;
+      }
+      .prd-hero-right {
+        width: 100%;
+        justify-content: center;
+      }
+      .prd-company-logo {
+        width: 160px;
+        height: 160px;
+      }
+
+      .prd-content {
+        padding: 2rem 1.25rem;
+      }
+
+      .prd-section h2 {
+        font-size: 1.4rem;
+      }
+
+      .prd-table {
+        display: block;
+        overflow-x: auto;
+        -webkit-overflow-scrolling: touch;
+        white-space: nowrap;
+        font-size: 0.8rem;
+      }
+      .prd-table th,
+      .prd-table td {
+        padding: 0.65rem 0.75rem;
+      }
+
+      .req-block {
+        padding: 1rem 1.1rem;
+      }
+      .req-block h4 { font-size: 0.92rem; }
+      .req-block p  { font-size: 0.82rem; }
+
+      .user-story-card {
+        font-size: 0.82rem;
+        padding: 0.85rem 1rem;
+      }
+
+      .persona-card {
+        padding: 1.25rem;
+      }
+      .persona-card .persona-header {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 0.5rem;
+      }
+
+      .prd-meta-row {
+        gap: 0.6rem;
+      }
+      .prd-meta-chip {
+        font-size: 0.72rem;
+        padding: 0.3rem 0.75rem;
+      }
+
+      .prd-breadcrumb {
+        font-size: 0.72rem;
+      }
+
+      .prd-hero-section h1 {
+        font-size: clamp(1.6rem, 6vw, 2.4rem);
+      }
+
+      .prd-section ul {
+        margin-left: 1rem;
+        font-size: 0.875rem;
+      }
+
+      .footer {
+        padding: 2rem 1.25rem;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .prd-company-logo {
+        width: 110px;
+        height: 110px;
+      }
+      .prd-hero-section h1 {
+        font-size: 1.5rem;
+      }
+      .prd-meta-chip {
+        font-size: 0.65rem;
+        padding: 0.25rem 0.6rem;
+      }
+      .prd-section h2 {
+        font-size: 1.2rem;
+      }
+    }
+  </style>
+</head>
+<body class="prd-page">
+
+  <nav class="navbar">
+    <a href="../index.html" class="nav-logo">
+      <img src="https://cdn-icons-png.flaticon.com/512/2921/2921222.png" alt="PRD Logo" class="nav-logo-img"/>
+      PRD <span>Project</span>
+    </a>
+    <div class="nav-links">
+      <a href="../index.html">← Home</a>
+      <a href="../index.html#prds">PRD Library</a>
+    </div>
+  </nav>
+
+  <div class="prd-hero-section">
+    <div class="prd-hero-left">
+      <div class="prd-breadcrumb">
+        <a href="../index.html">Home</a> &nbsp;/&nbsp;
+        <a href="../index.html#prds">PRD Library</a> &nbsp;/&nbsp;
+        Instagram
+      </div>
+      <h1>Instagram<br/><em>Reels</em></h1>
+      <p class="subtitle">A short form video feature that lets users create, share, and discover 15 second multi-clip videos with music, effects, and algorithm driven discovery, Instagram's answer to TikTok</p>
+      <div class="prd-meta-row">
+        <span class="prd-meta-chip">📅 Version 1.1</span>
+        <span class="prd-meta-chip">🏷️ Creator &amp; Discovery</span>
+        <span class="prd-meta-chip">📱 Android · iOS</span>
+        <span class="prd-meta-chip">🔄 Status: In Review</span>
+      </div>
+    </div>
+    <div class="prd-hero-right">
+      <img
+        src="../images/instagram.png"
+        alt="Instagram Logo"
+        class="prd-company-logo"
+      />
+    </div>
+  </div>
+
+  <div class="prd-content">
+
+    <!-- 1. Document Header -->
+    <div class="prd-section">
+      <div class="prd-section-label">Section 01</div>
+      <h2>Document Header</h2>
+      <table class="prd-table">
+        <tr><th>Field</th><th>Details</th></tr>
+        <tr><td><strong>Product</strong></td><td>Instagram Reels</td></tr>
+        <tr><td><strong>Doc Version</strong></td><td>v1.1</td></tr>
+        <tr><td><strong>Author</strong></td><td>Achintya, Associate Product Manager</td></tr>
+        <tr><td><strong>Status</strong></td><td>In Review</td></tr>
+        <tr><td><strong>Last Updated</strong></td><td>June 24, 2020</td></tr>
+        <tr><td><strong>Target Release</strong></td><td>Q3 2020</td></tr>
+        <tr><td><strong>Stakeholders</strong></td><td>Engineering (Backend, Mobile), Design (UX/UI), Mobile (Android, iOS), Data &amp; Analytics, Creator Experience, Algorithm &amp; Discovery Team, Monetization Team, Marketing &amp; Growth, QA &amp; SRE, Legal &amp; Policy, Community Management</td></tr>
+      </table>
+    </div>
+
+    <!-- 2. Executive Summary -->
+    <div class="prd-section">
+      <div class="prd-section-label">Section 02</div>
+      <h2>Executive Summary</h2>
+      <p>Instagram risks losing its younger audience to TikTok, a video first platform with algorithm driven discovery and engaging short form content. Traditional photo centric Instagram is not enough to compete with TikTok's viral, entertainment driven experience. Without a response, Instagram faces declining engagement, reduced growth, and potential loss of its core demographic.</p>
+      <p>This PRD proposes <strong>Instagram Reels</strong>: a short form video feature within Instagram that allows users to create, share, and discover <em>15 second multi-clip videos</em> with music, effects, and timer controls. Reels will be powered by algorithm driven discovery, creator monetization, and cross posting capabilities.</p>
+
+      <p style="margin-top:1.5rem;"><strong>Key capabilities (v1)</strong></p>
+      <ul style="margin-left:1.5rem; color:var(--ink-light); line-height:2.2; font-size:0.95rem; margin-bottom:1.5rem;">
+        <li>Create short videos with music, effects, and editing tools</li>
+        <li>Algorithm driven Reels feed, discovery beyond just followers</li>
+        <li>Creator monetization via rewards, brand partnerships, and future ad revenue sharing</li>
+        <li>Cross post Reels to Facebook and share externally</li>
+        <li>Retain and grow Instagram's younger audience against TikTok</li>
+      </ul>
+
+      <p><strong>Business &amp; User Impact</strong></p>
+      <table class="prd-table">
+        <tr><th>Stakeholder</th><th>Impact</th></tr>
+        <tr><td>Users</td><td>Short form video entertainment within Instagram; algorithm driven discovery of new creators</td></tr>
+        <tr><td>Creators</td><td>Wider reach via algorithm; monetization through rewards and brand partnerships</td></tr>
+        <tr><td>Platform</td><td>Retained younger audience; increased daily time spent; primary growth driver</td></tr>
+        <tr><td>Advertisers</td><td>Engaging short form video ad format to reach Gen Z within Instagram</td></tr>
+      </table>
+    </div>
+
+    <!-- 3. Problem Statement -->
+    <div class="prd-section">
+      <div class="prd-section-label">Section 03</div>
+      <h2>Problem Statement</h2>
+
+      <p><strong>The Core Problem:</strong> Instagram is losing its younger audience to TikTok. TikTok's short form, algorithm driven video experience is more engaging than Instagram's photo centric, follower based model, leading to lower daily time spent, reduced ad revenue potential, and risk of becoming a secondary platform for younger users.</p>
+
+      <p><strong>Who Has This Problem?</strong></p>
+      <ul style="margin-left:1.5rem; color:var(--ink-light); line-height:2.2; font-size:0.95rem; margin-bottom:1.2rem;">
+        <li><strong>Younger users (Gen Z, Millennials)</strong> who find Instagram's photo centric experience less engaging than TikTok</li>
+        <li><strong>Creators and content producers</strong> for whom TikTok offers better discovery and monetization for video content</li>
+        <li><strong>Instagram as a platform</strong> losing its younger demographic and facing declining growth</li>
+        <li><strong>Advertisers and brands</strong> whose ad reach diminishes as users migrate to TikTok</li>
+      </ul>
+
+      <p><strong>Evidence of the Problem</strong></p>
+      <table class="prd-table">
+        <tr><th>Signal</th><th>Data Point</th></tr>
+        <tr><td>TikTok's rapid growth</td><td>TikTok reached 1 billion+ monthly users by 2020; Gen Z adoption significantly higher than Instagram; daily time spent growing faster</td></tr>
+        <tr><td>Instagram engagement decline</td><td>Engagement among younger users declining on photo centric content; IGTV and Stories have not matched TikTok's engagement</td></tr>
+        <tr><td>Creator migration</td><td>Creators moving to TikTok for better discovery and monetization; viral video content increasingly hosted on TikTok</td></tr>
+        <tr><td>Competitive pressure</td><td>TikTok's algorithm driven discovery is more effective than Instagram's follower based model; no dedicated short form video feature on Instagram</td></tr>
+      </table>
+
+      <p style="margin-top:1.5rem;"><strong>What Happens Without Reels?</strong></p>
+      <ul style="margin-left:1.5rem; color:var(--ink-light); line-height:2.2; font-size:0.95rem;">
+        <li>Younger users migrate to TikTok entirely; engagement and content diversity on Instagram decline</li>
+        <li>Creators leave for better discovery and monetization on TikTok; video content shifts away from Instagram</li>
+        <li>Instagram loses younger audience, faces declining growth and relevance, and sees reduced ad revenue</li>
+        <li>Advertisers shift spend to TikTok; brand engagement on Instagram drops</li>
+      </ul>
+    </div>
+
+    <!-- 4. Goals & Objectives -->
+    <div class="prd-section">
+      <div class="prd-section-label">Section 04</div>
+      <h2>Goals &amp; Non-Goals</h2>
+
+      <p><strong>Business Goals</strong></p>
+      <table class="prd-table">
+        <tr><th>Goal</th><th>Target</th><th>Rationale</th></tr>
+        <tr><td>Retain younger audience</td><td>≥ 25% increase in Gen Z engagement within 12 months</td><td>Reels provides TikTok like experience, keeping younger users on Instagram</td></tr>
+        <tr><td>Become primary growth driver</td><td>Reels drives ≥ 40% of new user growth within 12 months</td><td>Short form video is a key growth lever for platform acquisition</td></tr>
+        <tr><td>Increase daily time spent</td><td>≥ 15% increase in daily time spent within 12 months</td><td>Reels increases engagement and entertainment value for all users</td></tr>
+      </table>
+
+      <br/>
+      <p><strong>User Goals</strong></p>
+      <ul style="margin-left:1.5rem; color:var(--ink-light); line-height:2.2; font-size:0.95rem; margin-bottom:1.5rem;">
+        <li>Create engaging 15 second multi-clip videos with music, effects, and timer controls in ≤ 5 taps</li>
+        <li>Discover new content via algorithm, see Reels from creators they don't follow, based on interests</li>
+        <li>Monetize content as a creator, earn via rewards program, brand partnerships, and future ad revenue sharing</li>
+      </ul>
+
+      <p><strong>🚫 Non-Goals (Out of Scope for v1)</strong></p>
+      <ul style="margin-left:1.5rem; color:var(--ink-light); line-height:2; font-size:0.95rem;">
+        <li>Long form video beyond 15 seconds, 30-second support is v2</li>
+        <li>Live Reels streaming, out of scope for v1</li>
+        <li>Reels shopping with product tags, out of scope for v1</li>
+        <li>Full ad revenue sharing for creators — v2/v3</li>
+        <li>Reels on Instagram Desktop, mobile-first; desktop support is v2</li>
+      </ul>
+    </div>
+
+    <!-- 5. Success Metrics -->
+    <div class="prd-section">
+      <div class="prd-section-label">Section 05</div>
+      <h2>Success Metrics / KPIs</h2>
+
+      <p style="margin-bottom:1rem;"><strong>Success Metrics</strong></p>
+      <table class="prd-table">
+        <tr><th>Metric</th><th>Target</th><th>Timeframe</th><th>Ownership</th></tr>
+        <tr><td>Gen Z engagement on Instagram</td><td>+25%</td><td>12 months</td><td>Product / Data</td></tr>
+        <tr><td>% of new user growth from Reels</td><td>≥ 40%</td><td>12 months</td><td>Product / Data</td></tr>
+        <tr><td>Daily time spent on Instagram</td><td>+15%</td><td>12 months</td><td>Product / Data</td></tr>
+        <tr><td>Reels creation rate</td><td>Grow steadily</td><td>12 months</td><td>Product / Data</td></tr>
+        <tr><td>User retention (Reels users)</td><td>Higher than baseline</td><td>12 months</td><td>Product / Data</td></tr>
+      </table>
+
+      <br/>
+      <p style="margin-bottom:1rem;"><strong>Key Performance Indicators (KPIs)</strong></p>
+      <table class="prd-table">
+        <tr><th>KPI</th><th>Target</th><th>Timeframe</th><th>Measurement Method</th><th>Ownership</th></tr>
+        <tr><td>Reels views per user (daily)</td><td>≥ 10</td><td>12 months</td><td>Event tracking</td><td>Product / Data</td></tr>
+        <tr><td>Reels creation per user (monthly)</td><td>≥ 3</td><td>12 months</td><td>Event tracking</td><td>Product / Data</td></tr>
+        <tr><td>Algorithm discovery rate (% non-followers)</td><td>≥ 60%</td><td>12 months</td><td>Algorithm tracking</td><td>Algorithm / Product</td></tr>
+        <tr><td>Creator monetization participation</td><td>≥ 10%</td><td>12 months</td><td>Event tracking</td><td>Monetization / Product</td></tr>
+        <tr><td>Cross-post rate (Reels → Facebook)</td><td>≥ 20%</td><td>12 months</td><td>Event tracking</td><td>Product / Data</td></tr>
+        <tr><td>Crash rate related to Reels feature</td><td>≤ 0.5%</td><td>1 month</td><td>Crash analytics</td><td>Engineering / QA</td></tr>
+        <tr><td>Support tickets per 1,000 users (Reels-related)</td><td>≤ 5</td><td>3 months</td><td>Support ticket tagging</td><td>CX / Product</td></tr>
+      </table>
+    </div>
+
+    <!-- 6. User Personas -->
+    <div class="prd-section">
+      <div class="prd-section-label">Section 06</div>
+      <h2>User Personas</h2>
+
+      <div class="persona-card">
+        <div class="persona-header">
+          <div class="persona-avatar">🎓</div>
+          <div>
+            <div class="persona-name">Aisha, 19 Gen Z User</div>
+            <div class="persona-role">Los Angeles, USA · College Student · Very high tech comfort</div>
+          </div>
+        </div>
+        <p><span class="persona-label">Context:</span> Spends 3+ hours daily on TikTok; creates and watches short-form video content regularly.</p>
+        <p><span class="persona-label">Pain Point:</span> Instagram is less engaging than TikTok; wants short-form video entertainment without leaving Instagram.</p>
+        <p><span class="persona-label">Goal:</span> Create and watch Reels without switching apps; discover new creators via algorithm driven feed.</p>
+      </div>
+
+      <div class="persona-card">
+        <div class="persona-header">
+          <div class="persona-avatar">🎬</div>
+          <div>
+            <div class="persona-name">Carlos, 27 Content Creator</div>
+            <div class="persona-role">Miami, USA · Video Creator · High tech comfort</div>
+          </div>
+        </div>
+        <p><span class="persona-label">Context:</span> Creates dance, comedy, and lifestyle videos; wants to grow audience and monetize content.</p>
+        <p><span class="persona-label">Pain Point:</span> TikTok offers better discovery and monetization; Instagram's follower-based model limits organic reach.</p>
+        <p><span class="persona-label">Goal:</span> Create Reels for wider reach via algorithm; earn via rewards program and brand partnerships.</p>
+      </div>
+
+      <div class="persona-card">
+        <div class="persona-header">
+          <div class="persona-avatar">📊</div>
+          <div>
+            <div class="persona-name">Priya, 34 Brand Marketer</div>
+            <div class="persona-role">London, UK · Marketing Manager · High tech comfort</div>
+          </div>
+        </div>
+        <p><span class="persona-label">Context:</span> Runs ad campaigns for a fashion brand; wants to reach younger audiences with engaging video formats.</p>
+        <p><span class="persona-label">Pain Point:</span> Younger users are migrating to TikTok; needs an engaging short-form video ad format on Instagram.</p>
+        <p><span class="persona-label">Goal:</span> Use Reels for ad campaigns to reach Gen Z via short-form video within Instagram.</p>
+      </div>
+
+      <div class="persona-card">
+        <div class="persona-header">
+          <div class="persona-avatar">👀</div>
+          <div>
+            <div class="persona-name">Michael, 25 Casual Viewer</div>
+            <div class="persona-role">Toronto, Canada · Software Engineer · High tech comfort</div>
+          </div>
+        </div>
+        <p><span class="persona-label">Context:</span> Watches Reels for entertainment; doesn't create content himself.</p>
+        <p><span class="persona-label">Pain Point:</span> Wants entertaining content without effort; Instagram's photo content is less engaging.</p>
+        <p><span class="persona-label">Goal:</span> Discover entertaining Reels via algorithm; spend time watching, not creating.</p>
+      </div>
+    </div>
+
+    <!-- 7. User Stories -->
+    <div class="prd-section">
+      <div class="prd-section-label">Section 07</div>
+      <h2>User Journey &amp; User Stories</h2>
+
+      <p style="margin-bottom:0.75rem; font-weight:600;">Primary User Journey - Creator</p>
+      <ol style="margin-left:1.5rem; color:var(--ink-light); line-height:2.2; font-size:0.95rem; margin-bottom:1.5rem;">
+        <li>User taps the Reels icon in Instagram navigation; Reels camera opens</li>
+        <li>User records a 15 second multi-clip video and adds music, effects, timer, and speed controls</li>
+        <li>User edits clips, adds text, adjusts timing, and previews the final Reel</li>
+        <li>User adds caption, hashtags, and share settings; publishes to feed and Reels tab</li>
+        <li>Eligible creators earn via rewards program and brand partnership opportunities</li>
+      </ol>
+
+      <p style="margin-bottom:0.75rem; font-weight:600;">Primary User Journey - Viewer</p>
+      <ol style="margin-left:1.5rem; color:var(--ink-light); line-height:2.2; font-size:0.95rem; margin-bottom:1.5rem;">
+        <li>User taps the Reels icon; algorithm driven Reels feed opens</li>
+        <li>User watches vertical 15 second videos that autoplay seamlessly</li>
+        <li>User discovers Reels from creators they don't follow, recommended by interests</li>
+        <li>User likes, comments, shares, saves, or follows new creators directly from Reels</li>
+      </ol>
+
+      <p style="margin-bottom:1rem; font-weight:600;">Epic 1 — Reels Creation &amp; Editing</p>
+      <div class="user-story-card"><strong>US-01 · P0</strong> — As a creator, I want to record 15 second multi-clip videos so that I can create engaging short-form content.</div>
+      <div class="user-story-card"><strong>US-02 · P0</strong> — As a creator, I want to add music from a licensed library so that my videos are entertaining and on trend.</div>
+      <div class="user-story-card"><strong>US-03 · P0</strong> — As a creator, I want to use effects and AR tools so that my videos are creative and visually compelling.</div>
+      <div class="user-story-card"><strong>US-04 · P0</strong> — As a creator, I want timer and speed controls so that I can precisely record and pace my clips.</div>
+      <div class="user-story-card"><strong>US-05 · P0</strong> — As a creator, I want to edit clips and add text overlays so that my videos are polished and complete.</div>
+
+      <p style="margin:1.5rem 0 1rem; font-weight:600;">Epic 2 — Reels Discovery &amp; Algorithm</p>
+      <div class="user-story-card"><strong>US-06 · P0</strong> — As a viewer, I want to see Reels from creators I don't follow so that I can discover new content beyond my existing network.</div>
+      <div class="user-story-card"><strong>US-07 · P0</strong> — As a viewer, I want algorithm driven recommendations so that I see content matching my interests automatically.</div>
+      <div class="user-story-card"><strong>US-08 · P0</strong> — As a viewer, I want Reels to autoplay seamlessly so that watching is effortless and uninterrupted.</div>
+      <div class="user-story-card"><strong>US-09 · P0</strong> — As a viewer, I want to like, comment, share, and save Reels so that I can interact with content I enjoy.</div>
+      <div class="user-story-card"><strong>US-10 · P0</strong> — As a viewer, I want to follow creators directly from the Reels feed so that I stay updated on their new content.</div>
+    </div>
+
+    <!-- 8. Functional Requirements -->
+    <div class="prd-section">
+      <div class="prd-section-label">Section 08</div>
+      <h2>Functional Requirements</h2>
+
+      <div class="req-block">
+        <div class="req-id">FR-01 &nbsp;<span class="priority-tag p0">P0</span></div>
+        <h4>Reels Camera &amp; Multi-Clip Recording</h4>
+        <p>Users must be able to open a dedicated Reels camera and record multiple clips up to a combined 15-second maximum. The creation flow must be completable in ≤ 5 taps from the Instagram home screen.</p>
+      </div>
+
+      <div class="req-block">
+        <div class="req-id">FR-02 &nbsp;<span class="priority-tag p0">P0</span></div>
+        <h4>Licensed Music Library</h4>
+        <p>The system must provide a searchable library of licensed songs for use in Reels. Music must comply with publisher licensing agreements. No unauthorized or uncleared audio may be surfaced to users.</p>
+      </div>
+
+      <div class="req-block">
+        <div class="req-id">FR-03 &nbsp;<span class="priority-tag p0">P0</span></div>
+        <h4>Effects &amp; AR Tools</h4>
+        <p>Users must be able to apply visual effects and augmented reality filters during or after recording. The effects library must load within ≤ 2 seconds and be browsable within the creation flow.</p>
+      </div>
+
+      <div class="req-block">
+        <div class="req-id">FR-04 &nbsp;<span class="priority-tag p0">P0</span></div>
+        <h4>Timer &amp; Speed Controls</h4>
+        <p>Users must be able to set a countdown timer before recording begins and adjust playback speed (slow motion and fast forward). Controls must be accessible within the primary recording interface.</p>
+      </div>
+
+      <div class="req-block">
+        <div class="req-id">FR-05 &nbsp;<span class="priority-tag p0">P0</span></div>
+        <h4>Clip Editing &amp; Text Overlays</h4>
+        <p>Users must be able to trim individual clips, reorder them, and add text overlays with customizable position and timing. A preview of the final Reel must be available before publishing.</p>
+      </div>
+
+      <div class="req-block">
+        <div class="req-id">FR-06 &nbsp;<span class="priority-tag p0">P0</span></div>
+        <h4>Algorith Driven Reels Feed</h4>
+        <p>The system must surface Reels from accounts the user does not follow, based on interest signals and engagement history. At least 60% of Reels shown must come from non-followed accounts to drive discovery.</p>
+      </div>
+
+      <div class="req-block">
+        <div class="req-id">FR-07 &nbsp;<span class="priority-tag p0">P0</span></div>
+        <h4>Cross-Post to Facebook</h4>
+        <p>Users must be able to cross-post their Reels to Facebook with a single toggle at publish time. Cross-post rate must be tracked as a KPI to measure inter-platform engagement.</p>
+      </div>
+
+      <div class="req-block">
+        <div class="req-id">FR-08 &nbsp;<span class="priority-tag p0">P0</span></div>
+        <h4>Creator Monetization, Rewards Program</h4>
+        <p>Eligible creators must be able to enroll in and track earnings from the Reels rewards program. Eligibility criteria (follower count, view thresholds, compliance) must be clearly communicated within the creator dashboard.</p>
+      </div>
+    </div>
+
+    <!-- 9. NFRs -->
+    <div class="prd-section">
+      <div class="prd-section-label">Section 09</div>
+      <h2>Non-Functional Requirements</h2>
+      <table class="prd-table">
+        <tr><th>NFR ID</th><th>Category</th><th>Requirement</th><th>Priority</th></tr>
+        <tr><td>NFR-01</td><td>Performance</td><td>Reels must load and begin playing within ≤ 2 seconds on average devices and networks</td><td>P0</td></tr>
+        <tr><td>NFR-02</td><td>Consistency</td><td>Reels must behave identically across Android and iOS with no critical functionality gaps</td><td>P0</td></tr>
+        <tr><td>NFR-03</td><td>Accessibility</td><td>Reels must support captions and be compatible with screen readers; WCAG 2.1 AA compliance required</td><td>P0</td></tr>
+        <tr><td>NFR-04</td><td>Reliability</td><td>System must handle network failures gracefully, show clear errors if Reels fail to load, and avoid crashes during creation or viewing</td><td>P0</td></tr>
+        <tr><td>NFR-05</td><td>Scalability</td><td>System must support high concurrent usage during peak hours (evenings); backend must scale without performance degradation</td><td>P0</td></tr>
+        <tr><td>NFR-06</td><td>Availability</td><td>Reels must maintain ≥ 99.5% uptime; critical failures must be detected and mitigated quickly</td><td>P0</td></tr>
+        <tr><td>NFR-07</td><td>Observability</td><td>System must log key events (Reels created, viewed, interacted) and provide dashboards for view rate, creation rate, and error rates</td><td>P0</td></tr>
+        <tr><td>NFR-08</td><td>Privacy</td><td>Reels data must comply with Instagram's privacy policies and applicable regulations (GDPR, etc.); no sensitive user data exposed</td><td>P0</td></tr>
+        <tr><td>NFR-09</td><td>Music Licensing</td><td>Music library must use only licensed songs from publishers; no unauthorized music may be surfaced or used in Reels</td><td>P0</td></tr>
+        <tr><td>NFR-10</td><td>Algorithm Neutrality</td><td>Algorithm must recommend diverse content, avoid bias toward specific creators, and ensure fair discovery across the creator pool</td><td>P0</td></tr>
+      </table>
+    </div>
+
+    <!-- 11. Assumptions & Constraints -->
+    <div class="prd-section">
+      <div class="prd-section-label">Section 10</div>
+      <h2>Assumptions &amp; Constraints</h2>
+      <p><strong>Assumptions:</strong></p>
+      <ul style="margin-left:1.5rem; color:var(--ink-light); line-height:2.2; font-size:0.95rem; margin-bottom:1.5rem;">
+        <li>Users will create and watch Reels regularly once the feature is available</li>
+        <li>Music licensing agreements can be secured with major publishers before launch</li>
+        <li>The algorithm will drive effective content discovery with sufficient early data signals</li>
+      </ul>
+      <p><strong>Constraints:</strong></p>
+      <ul style="margin-left:1.5rem; color:var(--ink-light); line-height:2.2; font-size:0.95rem;">
+        <li>15 second video maximum in v1 - longer Reels (30 sec) are v2</li>
+        <li>Mobile first launch - no desktop support in v1</li>
+        <li>Music licensing agreements will limit song availability at launch</li>
+        <li>Monetization eligibility requirements will reduce the initial creator pool</li>
+      </ul>
+    </div>
+
+    <!-- 12. Release Plan -->
+    <div class="prd-section">
+      <div class="prd-section-label">Section 11</div>
+      <h2>Release Plan &amp; Milestones</h2>
+      <table class="prd-table">
+        <tr><th>Phase</th><th>Target</th><th>Scope</th><th>Markets</th><th>Rollout</th></tr>
+        <tr><td><strong>Phase 1 - Select Market Launch</strong></td><td>August 2020</td><td>FR-01 to FR-08</td><td>India, UK, Australia</td><td>10% → 50% → 100% over 4 weeks. Mobile only (Android + iOS).</td></tr>
+        <tr><td><strong>Phase 2 - Global Expansion</strong></td><td>October 2020</td><td>All Phase 1 + NFR-05 (scalability)</td><td>US, Canada, Brazil, Europe, Asia</td><td>20% → 60% → 100% over 6 weeks. Mobile only.</td></tr>
+        <tr><td><strong>Phase 3 - Full Feature Maturity</strong></td><td>December 2020</td><td>All Phase 1 &amp; 2 + monetization enhancements</td><td>Global</td><td>100% everywhere. Mobile only (Desktop v2).</td></tr>
+      </table>
+    </div>
+
+    <!-- 13. Open Questions -->
+    <div class="prd-section">
+      <div class="prd-section-label">Section 12</div>
+      <h2>Open Questions</h2>
+      <table class="prd-table">
+        <tr><th>#</th><th>Question</th><th>Consideration</th></tr>
+        <tr><td>OQ-01</td><td>Should we support 30 second Reels in v2?</td><td>Longer content may improve creator retention but risks losing TikTok style brevity and engagement patterns</td></tr>
+        <tr><td>OQ-02</td><td>Should we add Live Reels streaming in v2/v3?</td><td>Live video would expand use cases but increases infrastructure complexity and moderation requirements</td></tr>
+        <tr><td>OQ-03</td><td>Should we add product tags for shopping in v2?</td><td>Shopping integration would unlock commerce revenue but requires additional trust &amp; safety review flows</td></tr>
+        <tr><td>OQ-04</td><td>Should we implement full ad revenue sharing in v2/v3?</td><td>Revenue sharing would attract top creators but requires a new monetization infrastructure and payout systems</td></tr>
+        <tr><td>OQ-05</td><td>Should we add Desktop support in v2?</td><td>Desktop reach would grow creator tools audience but requires significant UX redesign for vertical video</td></tr>
+      </table>
+    </div>
+
+  </div><!-- /prd-content -->
+
+  <footer class="footer">
+    <div class="footer-inner">
+      <div class="footer-brand">PRD Project</div>
+      <p>Built as a MBA portfolio project to master Product Management fundamentals through hands on PRD writing.</p>
+      <a href="../index.html" style="color:var(--yellow); font-weight:600; text-decoration:none;">← Back to Home</a>
+    </div>
+  </footer>
+
+</body>
+</html>
